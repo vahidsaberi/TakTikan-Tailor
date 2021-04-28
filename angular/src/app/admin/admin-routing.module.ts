@@ -24,7 +24,6 @@ import { DynamicPropertyComponent } from '@app/admin/dynamic-properties/dynamic-
 import { DynamicEntityPropertyComponent } from '@app/admin/dynamic-properties/dynamic-entity-properties/dynamic-entity-property.component';
 import { DynamicEntityPropertyValueComponent } from '@app/admin/dynamic-properties/dynamic-entity-properties/value/dynamic-entity-property-value.component';
 
-
 @NgModule({
     imports: [
         RouterModule.forChild([

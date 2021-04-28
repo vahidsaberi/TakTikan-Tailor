@@ -38,12 +38,12 @@ export class AppNavigationService {
             new AppMenuItem('DemoUiComponents', 'Pages.DemoUiComponents', 'flaticon-shapes', '/app/admin/demo-ui-components'),
             new AppMenuItem('TakTikan', '', 'flaticon-book', '', [],[
                 new AppMenuItem('BaseData', '', 'flaticon-open-box', '', [],[
-                    new AppMenuItem('FabricType', 'Pages.TakTikan.BaseData.FabricType', 'flaticon2-download-1', '/app/TakTikan/FabricType'),
-                    new AppMenuItem('FabricMaterial', 'Pages.TakTikan.BaseData.FabricMaterial', 'flaticon2-files-and-folders', '/app/TakTikan/FabricMaterial'),
-                    new AppMenuItem('FabricCut', 'Pages.TakTikan.BaseData.FabricCut', 'flaticon-background', '/app/TakTikan/FabricCut'),
-                    new AppMenuItem('Gender', 'Pages.TakTikan.BaseData.Gender', 'flaticon2-avatar', '/app/TakTikan/Gender'),
-                    new AppMenuItem('Seamstress', 'Pages.TakTikan.BaseData.Seamstress', 'flaticon2-user', '/app/TakTikan/Seamstress'),
-                    new AppMenuItem('SalineStone', 'Pages.TakTikan.BaseData.SalineStone', 'flaticon2-user-outline-symbol', '/app/TakTikan/SalineStone')
+                    new AppMenuItem('FabricType', 'Pages.TakTikan.FabricType', 'flaticon2-download-1', '/app/TakTikan/FabricType'),
+                    new AppMenuItem('FabricMaterial', 'Pages.TakTikan.FabricMaterial', 'flaticon2-files-and-folders', '/app/TakTikan/FabricMaterial'),
+                    new AppMenuItem('FabricCut', 'Pages.TakTikan.FabricCut', 'flaticon-background', '/app/TakTikan/FabricCut'),
+                    new AppMenuItem('Gender', 'Pages.TakTikan.Gender', 'flaticon2-avatar', '/app/TakTikan/Gender'),
+                    new AppMenuItem('Seamstress', 'Pages.TakTikan.Seamstress', 'flaticon2-user', '/app/TakTikan/Seamstress'),
+                    new AppMenuItem('SalineStone', 'Pages.TakTikan.SalineStone', 'flaticon2-user-outline-symbol', '/app/TakTikan/SalineStone')
                 ]),
                 new AppMenuItem('FabricRoll', 'Pages.TakTikan.FabricRoll', 'flaticon2-contrast', '/app/TakTikan/FabricRoll'),
                 new AppMenuItem('SewnPiece', 'Pages.TakTikan.SewnPiece', 'flaticon2-checkmark', '/app/TakTikan/SewnPiece'),

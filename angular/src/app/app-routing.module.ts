@@ -33,6 +33,12 @@ import { NgxSpinnerService } from 'ngx-spinner';
                         canLoad: [AppRouteGuard]
                     },
                     {
+                        path: 'taktikan',
+                        loadChildren: () => import('app/taktikan/taktikan.module').then(m => m.TakTikanModule), //Lazy load admin module
+                        data: { preload: true },
+                        canLoad: [AppRouteGuard]
+                    },
+                    {
                         path: '**', redirectTo: 'notifications'
                     }
                 ]
