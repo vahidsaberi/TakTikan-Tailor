@@ -1,5 +1,4 @@
 ﻿using Abp.Domain.Repositories;
-using Abp.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -20,23 +19,22 @@ namespace TakTikan.Tailor.Service
 
         public async Task CreateFabricCut(FabricCutDto input)
         {
-            try
-            {
-                var model = ObjectMapper.Map<FabricCut>(input);
+            //try
+            //{
+            var model = ObjectMapper.Map<FabricCut>(input);
 
-                await this._repository.InsertAsync(model);
-            }
-            catch (Exception ex)
-            {
-                throw new UserFriendlyException(ex.Message);
-            }
+            await this._repository.InsertAsync(model);
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw new UserFriendlyException(ex.Message);
+            //}
         }
 
         public async Task DeleteFabricCut(int id)
         {
             await this._repository.DeleteAsync(id);
         }
-
 
         public async Task<List<FabricCutDto>> FindFabricCut(Expression<Func<FabricCut, bool>> predicate)
         {
