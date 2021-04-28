@@ -1,10 +1,10 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "https://localhost:44302/",
-      "sslPort": 44302
+      "applicationUrl": "http://localhost:56780/",
+      "sslPort": 44384
     }
   },
   "profiles": {
@@ -18,10 +18,10 @@
     "TakTikan.Tailor.Web": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:44302",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "https://localhost:44302"
     },
     "Docker": {
       "commandName": "Docker",

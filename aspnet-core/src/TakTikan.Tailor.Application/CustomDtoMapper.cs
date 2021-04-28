@@ -24,6 +24,7 @@ using TakTikan.Tailor.Authorization.Users.Importing.Dto;
 using TakTikan.Tailor.Authorization.Users.Profile.Dto;
 using TakTikan.Tailor.Chat;
 using TakTikan.Tailor.Chat.Dto;
+using TakTikan.Tailor.Dto;
 using TakTikan.Tailor.DynamicEntityProperties.Dto;
 using TakTikan.Tailor.Editions;
 using TakTikan.Tailor.Editions.Dto;
@@ -163,6 +164,18 @@ namespace TakTikan.Tailor
             configuration.CreateMap<CreateUserDelegationDto, UserDelegation>();
 
             /* ADD YOUR OWN CUSTOM AUTOMAPPER MAPPINGS HERE */
+
+            // TakTikan Tailor
+            configuration.CreateMap<FabricCutDto, FabricCut>().ReverseMap();
+            configuration.CreateMap<FabricMaterialDto, FabricMaterial>().ReverseMap();
+            configuration.CreateMap<FabricRollDto, FabricRoll>().ReverseMap();
+            configuration.CreateMap<FabricTypeDto, FabricType>().ReverseMap();
+            configuration.CreateMap<GenderDto, Gender>().ReverseMap();
+            configuration.CreateMap<SalineStoneDto, SalineStone>().ReverseMap();
+            configuration.CreateMap<SalineStoneOrderDto, SalineStoneOrder>().ReverseMap();
+            configuration.CreateMap<SalineStoneOrderItemDto, SalineStoneOrderItem>().ReverseMap();
+            configuration.CreateMap<SeamstressDto, Seamstress>().ReverseMap();
+            configuration.CreateMap<SewnPieceDto, SewnPiece>().ReverseMap();
         }
     }
 }

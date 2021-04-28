@@ -1118,5 +1118,17 @@
     <text name="DisplayName">Display Name</text>
     <text name="AssignDynamicPropertiesToEntity">Assign Dynamic Properties To Entity</text>
     <text name="SendEmailWithSavedSettingsWarning">You haven't saved the settings, do you want to send the test mail with the previously saved settings?</text>
+
+    <text name="TakTikan">TakTikan</text>
+    <text name="BaseData">Base Data</text>
+    <text name="FabricType">Fabric Type</text>
+    <text name="FabricMaterial">Fabric Material</text>
+    <text name="FabricCut">Fabric Cut</text>
+    <text name="Gender">Gender</text>
+    <text name="Seamstress">Seamstress</text>
+    <text name="SalineStone">Saline Stone</text>
+    <text name="FabricRoll">Fabric Roll</text>
+    <text name="SewnPiece">Sewn Piece</text>
+    <text name="SalineStoneOrder">Saline Stone Order</text>
   </texts>
 </localizationDictionary>

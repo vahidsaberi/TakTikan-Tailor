@@ -2,7 +2,7 @@
 
 namespace TakTikan.Tailor.Dto
 {
-    public class SalineStone
+    public class SalineStoneDto
     {
         public int Name { get; set; }
         public string Phone { get; set; }

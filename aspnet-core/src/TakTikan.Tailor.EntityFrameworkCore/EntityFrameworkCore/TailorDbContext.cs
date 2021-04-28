@@ -36,6 +36,17 @@ namespace TakTikan.Tailor.EntityFrameworkCore
 
         public virtual DbSet<UserDelegation> UserDelegations { get; set; }
 
+        public virtual DbSet<FabricCut> FabricCuts { get; set; }
+        public virtual DbSet<FabricMaterial> FabricMaterials { get; set; }
+        public virtual DbSet<FabricRoll> FabricRolls { get; set; }
+        public virtual DbSet<FabricType> FabricTypes { get; set; }
+        public virtual DbSet<Gender> Genders { get; set; }
+        public virtual DbSet<SalineStone> SalineStones { get; set; }
+        public virtual DbSet<SalineStoneOrder> SalineStoneOrders { get; set; }
+        public virtual DbSet<SalineStoneOrderItem> SalineStoneOrderItems { get; set; }
+        public virtual DbSet<Seamstress> Seamstresses { get; set; }
+        public virtual DbSet<SewnPiece> SewnPieces { get; set; }
+
         public TailorDbContext(DbContextOptions<TailorDbContext> options)
             : base(options)
         {
