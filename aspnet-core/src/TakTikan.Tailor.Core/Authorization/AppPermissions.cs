@@ -97,6 +97,56 @@
         public const string Pages_Administration_Host_Settings = "Pages.Administration.Host.Settings";
         public const string Pages_Administration_Host_Dashboard = "Pages.Administration.Host.Dashboard";
 
-        public const string Pages_Administration_TakTikan = "Pages.Administration.TakTikan";
+        public const string Pages_TakTikan = "Pages.TakTikan";
+
+        public const string Pages_TakTikan_FabricCut        = "Pages.TakTikan.FabricCut";
+        public const string Pages_TakTikan_FabricCut_Create = "Pages.TakTikan.FabricCut.Create";
+        public const string Pages_TakTikan_FabricCut_Edit   = "Pages.TakTikan.FabricCut.Edit";
+        public const string Pages_TakTikan_FabricCut_Delete = "Pages.TakTikan.FabricCut.Delete";
+
+        public const string Pages_TakTikan_FabricMaterial           = "Pages.TakTikan.FabricMaterial";
+        public const string Pages_TakTikan_FabricMaterial_Create    = "Pages.TakTikan.FabricMaterial.Create";
+        public const string Pages_TakTikan_FabricMaterial_Edit      = "Pages.TakTikan.FabricMaterial.Edit";
+        public const string Pages_TakTikan_FabricMaterial_Delete    = "Pages.TakTikan.FabricMaterial.Delete";
+
+        public const string Pages_TakTikan_FabricRoll           = "Pages.TakTikan.FabricRoll";
+        public const string Pages_TakTikan_FabricRoll_Create    = "Pages.TakTikan.FabricRoll.Create";
+        public const string Pages_TakTikan_FabricRoll_Edit      = "Pages.TakTikan.FabricRoll.Edit";
+        public const string Pages_TakTikan_FabricRoll_Delete    = "Pages.TakTikan.FabricRoll.Delete";
+
+        public const string Pages_TakTikan_FabricType           = "Pages.TakTikan.FabricType";
+        public const string Pages_TakTikan_FabricType_Create    = "Pages.TakTikan.FabricType.Create";
+        public const string Pages_TakTikan_FabricType_Edit      = "Pages.TakTikan.FabricType.Edit";
+        public const string Pages_TakTikan_FabricType_Delete    = "Pages.TakTikan.FabricType.Delete";
+
+        public const string Pages_TakTikan_Gender           = "Pages.TakTikan.Gender";
+        public const string Pages_TakTikan_Gender_Create    = "Pages.TakTikan.Gender.Create";
+        public const string Pages_TakTikan_Gender_Edit      = "Pages.TakTikan.Gender.Edit";
+        public const string Pages_TakTikan_Gender_Delete    = "Pages.TakTikan.Gender.Delete";
+
+        public const string Pages_TakTikan_SalineStone          = "Pages.TakTikan.SalineStone";
+        public const string Pages_TakTikan_SalineStone_Create   = "Pages.TakTikan.SalineStone.Create";
+        public const string Pages_TakTikan_SalineStone_Edit     = "Pages.TakTikan.SalineStone.Edit";
+        public const string Pages_TakTikan_SalineStone_Delete   = "Pages.TakTikan.SalineStone.Delete";
+
+        public const string Pages_TakTikan_SalineStoneOrder         = "Pages.TakTikan.SalineStoneOrder";
+        public const string Pages_TakTikan_SalineStoneOrder_Create  = "Pages.TakTikan.SalineStoneOrder.Create";
+        public const string Pages_TakTikan_SalineStoneOrder_Edit    = "Pages.TakTikan.SalineStoneOrder.Edit";
+        public const string Pages_TakTikan_SalineStoneOrder_Delete  = "Pages.TakTikan.SalineStoneOrder.Delete";
+
+        public const string Pages_TakTikan_SalineStoneOrderItem         = "Pages.TakTikan.SalineStoneOrderItem";
+        public const string Pages_TakTikan_SalineStoneOrderItem_Create  = "Pages.TakTikan.SalineStoneOrderItem.Create";
+        public const string Pages_TakTikan_SalineStoneOrderItem_Edit    = "Pages.TakTikan.SalineStoneOrderItem.Edit";
+        public const string Pages_TakTikan_SalineStoneOrderItem_Delete  = "Pages.TakTikan.SalineStoneOrderItem.Delete";
+
+        public const string Pages_TakTikan_Seamstress           = "Pages.TakTikan.Seamstress";
+        public const string Pages_TakTikan_Seamstress_Create    = "Pages.TakTikan.Seamstress.Create";
+        public const string Pages_TakTikan_Seamstress_Edit      = "Pages.TakTikan.Seamstress.Edit";
+        public const string Pages_TakTikan_Seamstress_Delete    = "Pages.TakTikan.Seamstress.Delete";
+
+        public const string Pages_TakTikan_SewnPiece        = "Pages.TakTikan.SewnPiece";
+        public const string Pages_TakTikan_SewnPiece_Create = "Pages.TakTikan.SewnPiece.Create";
+        public const string Pages_TakTikan_SewnPiece_Edit   = "Pages.TakTikan.SewnPiece.Edit";
+        public const string Pages_TakTikan_SewnPiece_Delete = "Pages.TakTikan.SewnPiece.Delete";
     }
 }

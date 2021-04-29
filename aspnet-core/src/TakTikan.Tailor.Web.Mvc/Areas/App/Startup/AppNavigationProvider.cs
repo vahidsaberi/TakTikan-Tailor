@@ -141,21 +141,6 @@ namespace TakTikan.Tailor.Web.Areas.App.Startup
                         icon: "flaticon-shapes",
                         permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_DemoUiComponents)
                     )
-                ).AddItem(new MenuItemDefinition(
-                    AppPageNames.TakTikan.Main,
-                        L("TakTikan"),
-                        url: "App/TakTikan",
-                        icon: "glyphicon glyphicon-book",
-                        permissionDependency : new SimplePermissionDependency(AppPermissions.Pages_Administration_TakTikan)
-                        ).AddItem(new MenuItemDefinition(
-                            AppPageNames.TakTikan.BaseData,
-                            L("BaseData"),
-                            url: "App/TakTikan/BaseData",
-                            icon: "glyphicon glyphicon-book",
-                            permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_TakTikan)
-                        )
-
-                    )
                 );
         }
 

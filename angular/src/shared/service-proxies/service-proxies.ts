@@ -13,7 +13,6 @@ import { Observable, throwError as _observableThrow, of as _observableOf } from 
 import { Injectable, Inject, Optional, InjectionToken } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse, HttpResponseBase } from '@angular/common/http';
 
-
 export const API_BASE_URL = new InjectionToken<string>('API_BASE_URL');
 
 @Injectable()
@@ -4840,6 +4839,855 @@ export class FabricCutServiceProxy {
 }
 
 @Injectable()
+export class FabricMaterialServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    createFabricMaterial(body: FabricMaterialDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/FabricMaterial/CreateFabricMaterial";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateFabricMaterial(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateFabricMaterial(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateFabricMaterial(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    deleteFabricMaterial(id: number | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/FabricMaterial/DeleteFabricMaterial?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteFabricMaterial(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteFabricMaterial(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteFabricMaterial(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    findFabricMaterial(body: ExpressionOfFuncOfFabricMaterialBoolean | undefined): Observable<FabricMaterialDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/FabricMaterial/FindFabricMaterial";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processFindFabricMaterial(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processFindFabricMaterial(<any>response_);
+                } catch (e) {
+                    return <Observable<FabricMaterialDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<FabricMaterialDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processFindFabricMaterial(response: HttpResponseBase): Observable<FabricMaterialDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(FabricMaterialDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<FabricMaterialDto[]>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getAllFabricMaterial(): Observable<FabricMaterialDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/FabricMaterial/GetAllFabricMaterial";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllFabricMaterial(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllFabricMaterial(<any>response_);
+                } catch (e) {
+                    return <Observable<FabricMaterialDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<FabricMaterialDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAllFabricMaterial(response: HttpResponseBase): Observable<FabricMaterialDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(FabricMaterialDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<FabricMaterialDto[]>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    updateFabricMaterial(body: FabricMaterialDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/FabricMaterial/UpdateFabricMaterial";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processUpdateFabricMaterial(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processUpdateFabricMaterial(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processUpdateFabricMaterial(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+}
+
+@Injectable()
+export class FabricRollServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    createFabricRoll(body: FabricRollDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/FabricRoll/CreateFabricRoll";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateFabricRoll(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateFabricRoll(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateFabricRoll(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    deleteFabricRoll(id: number | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/FabricRoll/DeleteFabricRoll?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteFabricRoll(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteFabricRoll(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteFabricRoll(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    findFabricRoll(body: ExpressionOfFuncOfFabricRollBoolean | undefined): Observable<FabricRollDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/FabricRoll/FindFabricRoll";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processFindFabricRoll(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processFindFabricRoll(<any>response_);
+                } catch (e) {
+                    return <Observable<FabricRollDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<FabricRollDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processFindFabricRoll(response: HttpResponseBase): Observable<FabricRollDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(FabricRollDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<FabricRollDto[]>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getAllFabricRoll(): Observable<FabricRollDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/FabricRoll/GetAllFabricRoll";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllFabricRoll(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllFabricRoll(<any>response_);
+                } catch (e) {
+                    return <Observable<FabricRollDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<FabricRollDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAllFabricRoll(response: HttpResponseBase): Observable<FabricRollDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(FabricRollDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<FabricRollDto[]>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    updateFabricRoll(body: FabricRollDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/FabricRoll/UpdateFabricRoll";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processUpdateFabricRoll(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processUpdateFabricRoll(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processUpdateFabricRoll(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+}
+
+@Injectable()
+export class FabricTypeServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    createFabricType(body: FabricTypeDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/FabricType/CreateFabricType";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateFabricType(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateFabricType(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateFabricType(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    deleteFabricType(id: number | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/FabricType/DeleteFabricType?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteFabricType(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteFabricType(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteFabricType(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    findFabricType(body: ExpressionOfFuncOfFabricTypeBoolean | undefined): Observable<FabricTypeDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/FabricType/FindFabricType";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processFindFabricType(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processFindFabricType(<any>response_);
+                } catch (e) {
+                    return <Observable<FabricTypeDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<FabricTypeDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processFindFabricType(response: HttpResponseBase): Observable<FabricTypeDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(FabricTypeDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<FabricTypeDto[]>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getAllFabricType(): Observable<FabricTypeDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/FabricType/GetAllFabricType";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllFabricType(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllFabricType(<any>response_);
+                } catch (e) {
+                    return <Observable<FabricTypeDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<FabricTypeDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAllFabricType(response: HttpResponseBase): Observable<FabricTypeDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(FabricTypeDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<FabricTypeDto[]>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    updateFabricType(body: FabricTypeDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/FabricType/UpdateFabricType";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processUpdateFabricType(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processUpdateFabricType(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processUpdateFabricType(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+}
+
+@Injectable()
 export class FriendshipServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -5100,6 +5948,289 @@ export class FriendshipServiceProxy {
     }
 
     protected processAcceptFriendshipRequest(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+}
+
+@Injectable()
+export class GenderServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    createGender(body: GenderDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/Gender/CreateGender";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateGender(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateGender(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateGender(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    deleteGender(id: number | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/Gender/DeleteGender?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteGender(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteGender(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteGender(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    findGender(body: ExpressionOfFuncOfGenderBoolean | undefined): Observable<GenderDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Gender/FindGender";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processFindGender(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processFindGender(<any>response_);
+                } catch (e) {
+                    return <Observable<GenderDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<GenderDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processFindGender(response: HttpResponseBase): Observable<GenderDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(GenderDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<GenderDto[]>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getAllGender(): Observable<GenderDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Gender/GetAllGender";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllGender(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllGender(<any>response_);
+                } catch (e) {
+                    return <Observable<GenderDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<GenderDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAllGender(response: HttpResponseBase): Observable<GenderDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(GenderDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<GenderDto[]>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    updateGender(body: GenderDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/Gender/UpdateGender";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processUpdateGender(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processUpdateGender(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processUpdateGender(response: HttpResponseBase): Observable<void> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -9494,6 +10625,1138 @@ export class RoleServiceProxy {
 }
 
 @Injectable()
+export class SalineStoneServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    createSalineStone(body: SalineStoneDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/SalineStone/CreateSalineStone";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateSalineStone(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateSalineStone(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateSalineStone(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    deleteSalineStone(id: number | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/SalineStone/DeleteSalineStone?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteSalineStone(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteSalineStone(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteSalineStone(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    findSalineStone(body: ExpressionOfFuncOfSalineStoneBoolean | undefined): Observable<SalineStoneDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/SalineStone/FindSalineStone";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processFindSalineStone(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processFindSalineStone(<any>response_);
+                } catch (e) {
+                    return <Observable<SalineStoneDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<SalineStoneDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processFindSalineStone(response: HttpResponseBase): Observable<SalineStoneDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(SalineStoneDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<SalineStoneDto[]>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getAllSalineStone(): Observable<SalineStoneDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/SalineStone/GetAllSalineStone";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllSalineStone(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllSalineStone(<any>response_);
+                } catch (e) {
+                    return <Observable<SalineStoneDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<SalineStoneDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAllSalineStone(response: HttpResponseBase): Observable<SalineStoneDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(SalineStoneDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<SalineStoneDto[]>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    updateSalineStone(body: SalineStoneDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/SalineStone/UpdateSalineStone";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processUpdateSalineStone(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processUpdateSalineStone(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processUpdateSalineStone(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+}
+
+@Injectable()
+export class SalineStoneOrderServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    createSalineStoneOrder(body: SalineStoneOrderDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/SalineStoneOrder/CreateSalineStoneOrder";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateSalineStoneOrder(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateSalineStoneOrder(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateSalineStoneOrder(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    deleteSalineStoneOrder(id: number | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/SalineStoneOrder/DeleteSalineStoneOrder?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteSalineStoneOrder(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteSalineStoneOrder(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteSalineStoneOrder(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    findSalineStoneOrder(body: ExpressionOfFuncOfSalineStoneOrderBoolean | undefined): Observable<SalineStoneOrderDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/SalineStoneOrder/FindSalineStoneOrder";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processFindSalineStoneOrder(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processFindSalineStoneOrder(<any>response_);
+                } catch (e) {
+                    return <Observable<SalineStoneOrderDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<SalineStoneOrderDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processFindSalineStoneOrder(response: HttpResponseBase): Observable<SalineStoneOrderDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(SalineStoneOrderDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<SalineStoneOrderDto[]>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getAllSalineStoneOrder(): Observable<SalineStoneOrderDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/SalineStoneOrder/GetAllSalineStoneOrder";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllSalineStoneOrder(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllSalineStoneOrder(<any>response_);
+                } catch (e) {
+                    return <Observable<SalineStoneOrderDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<SalineStoneOrderDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAllSalineStoneOrder(response: HttpResponseBase): Observable<SalineStoneOrderDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(SalineStoneOrderDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<SalineStoneOrderDto[]>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    updateSalineStoneOrder(body: SalineStoneOrderDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/SalineStoneOrder/UpdateSalineStoneOrder";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processUpdateSalineStoneOrder(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processUpdateSalineStoneOrder(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processUpdateSalineStoneOrder(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+}
+
+@Injectable()
+export class SalineStoneOrderItemServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    createSalineStoneOrderItem(body: SalineStoneOrderItemDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/SalineStoneOrderItem/CreateSalineStoneOrderItem";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateSalineStoneOrderItem(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateSalineStoneOrderItem(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateSalineStoneOrderItem(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    deleteSalineStoneOrderItem(id: number | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/SalineStoneOrderItem/DeleteSalineStoneOrderItem?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteSalineStoneOrderItem(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteSalineStoneOrderItem(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteSalineStoneOrderItem(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    findSalineStoneOrderItem(body: ExpressionOfFuncOfSalineStoneOrderItemBoolean | undefined): Observable<SalineStoneOrderItemDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/SalineStoneOrderItem/FindSalineStoneOrderItem";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processFindSalineStoneOrderItem(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processFindSalineStoneOrderItem(<any>response_);
+                } catch (e) {
+                    return <Observable<SalineStoneOrderItemDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<SalineStoneOrderItemDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processFindSalineStoneOrderItem(response: HttpResponseBase): Observable<SalineStoneOrderItemDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(SalineStoneOrderItemDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<SalineStoneOrderItemDto[]>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getAllSalineStoneOrderItem(): Observable<SalineStoneOrderItemDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/SalineStoneOrderItem/GetAllSalineStoneOrderItem";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllSalineStoneOrderItem(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllSalineStoneOrderItem(<any>response_);
+                } catch (e) {
+                    return <Observable<SalineStoneOrderItemDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<SalineStoneOrderItemDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAllSalineStoneOrderItem(response: HttpResponseBase): Observable<SalineStoneOrderItemDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(SalineStoneOrderItemDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<SalineStoneOrderItemDto[]>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    updateSalineStoneOrderItem(body: SalineStoneOrderItemDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/SalineStoneOrderItem/UpdateSalineStoneOrderItem";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processUpdateSalineStoneOrderItem(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processUpdateSalineStoneOrderItem(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processUpdateSalineStoneOrderItem(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+}
+
+@Injectable()
+export class SeamstressServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    createSeamstress(body: SeamstressDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/Seamstress/CreateSeamstress";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateSeamstress(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateSeamstress(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateSeamstress(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    deleteSeamstress(id: number | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/Seamstress/DeleteSeamstress?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteSeamstress(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteSeamstress(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteSeamstress(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    findSeamstress(body: ExpressionOfFuncOfSeamstressBoolean | undefined): Observable<SeamstressDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Seamstress/FindSeamstress";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processFindSeamstress(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processFindSeamstress(<any>response_);
+                } catch (e) {
+                    return <Observable<SeamstressDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<SeamstressDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processFindSeamstress(response: HttpResponseBase): Observable<SeamstressDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(SeamstressDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<SeamstressDto[]>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getAllSeamstress(): Observable<SeamstressDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Seamstress/GetAllSeamstress";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllSeamstress(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllSeamstress(<any>response_);
+                } catch (e) {
+                    return <Observable<SeamstressDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<SeamstressDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAllSeamstress(response: HttpResponseBase): Observable<SeamstressDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(SeamstressDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<SeamstressDto[]>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    updateSeamstress(body: SeamstressDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/Seamstress/UpdateSeamstress";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processUpdateSeamstress(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processUpdateSeamstress(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processUpdateSeamstress(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+}
+
+@Injectable()
 export class SessionServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -9604,6 +11867,289 @@ export class SessionServiceProxy {
             }));
         }
         return _observableOf<UpdateUserSignInTokenOutput>(<any>null);
+    }
+}
+
+@Injectable()
+export class SewnPieceServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    createSewnPiece(body: SewnPieceDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/SewnPiece/CreateSewnPiece";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateSewnPiece(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateSewnPiece(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateSewnPiece(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    deleteSewnPiece(id: number | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/SewnPiece/DeleteSewnPiece?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteSewnPiece(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteSewnPiece(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteSewnPiece(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    findSewnPiece(body: ExpressionOfFuncOfSewnPieceBoolean | undefined): Observable<SewnPieceDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/SewnPiece/FindSewnPiece";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processFindSewnPiece(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processFindSewnPiece(<any>response_);
+                } catch (e) {
+                    return <Observable<SewnPieceDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<SewnPieceDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processFindSewnPiece(response: HttpResponseBase): Observable<SewnPieceDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(SewnPieceDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<SewnPieceDto[]>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getAllSewnPiece(): Observable<SewnPieceDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/SewnPiece/GetAllSewnPiece";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllSewnPiece(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllSewnPiece(<any>response_);
+                } catch (e) {
+                    return <Observable<SewnPieceDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<SewnPieceDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAllSewnPiece(response: HttpResponseBase): Observable<SewnPieceDto[]> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(SewnPieceDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<SewnPieceDto[]>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    updateSewnPiece(body: SewnPieceDto | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/SewnPiece/UpdateSewnPiece";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+            })
+        };
+
+        return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processUpdateSewnPiece(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processUpdateSewnPiece(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processUpdateSewnPiece(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
     }
 }
 
@@ -18374,6 +20920,1026 @@ export interface IExpressionOfFuncOfFabricCutBoolean {
     canReduce: boolean;
 }
 
+export class FabricMaterial implements IFabricMaterial {
+    title!: string | undefined;
+    fabricTypies!: FabricType[] | undefined;
+    creatorUserId!: number | undefined;
+    creationTime!: DateTime;
+    lastModifierUserId!: number | undefined;
+    lastModificationTime!: DateTime | undefined;
+    deleterUserId!: number | undefined;
+    deletionTime!: DateTime | undefined;
+    isDeleted!: boolean;
+    isActive!: boolean;
+    id!: number;
+
+    constructor(data?: IFabricMaterial) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.title = _data["title"];
+            if (Array.isArray(_data["fabricTypies"])) {
+                this.fabricTypies = [] as any;
+                for (let item of _data["fabricTypies"])
+                    this.fabricTypies!.push(FabricType.fromJS(item));
+            }
+            this.creatorUserId = _data["creatorUserId"];
+            this.creationTime = _data["creationTime"] ? DateTime.fromISO(_data["creationTime"].toString()) : <any>undefined;
+            this.lastModifierUserId = _data["lastModifierUserId"];
+            this.lastModificationTime = _data["lastModificationTime"] ? DateTime.fromISO(_data["lastModificationTime"].toString()) : <any>undefined;
+            this.deleterUserId = _data["deleterUserId"];
+            this.deletionTime = _data["deletionTime"] ? DateTime.fromISO(_data["deletionTime"].toString()) : <any>undefined;
+            this.isDeleted = _data["isDeleted"];
+            this.isActive = _data["isActive"];
+            this.id = _data["id"];
+        }
+    }
+
+    static fromJS(data: any): FabricMaterial {
+        data = typeof data === 'object' ? data : {};
+        let result = new FabricMaterial();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["title"] = this.title;
+        if (Array.isArray(this.fabricTypies)) {
+            data["fabricTypies"] = [];
+            for (let item of this.fabricTypies)
+                data["fabricTypies"].push(item.toJSON());
+        }
+        data["creatorUserId"] = this.creatorUserId;
+        data["creationTime"] = this.creationTime ? this.creationTime.toString() : <any>undefined;
+        data["lastModifierUserId"] = this.lastModifierUserId;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toString() : <any>undefined;
+        data["deleterUserId"] = this.deleterUserId;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime.toString() : <any>undefined;
+        data["isDeleted"] = this.isDeleted;
+        data["isActive"] = this.isActive;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IFabricMaterial {
+    title: string | undefined;
+    fabricTypies: FabricType[] | undefined;
+    creatorUserId: number | undefined;
+    creationTime: DateTime;
+    lastModifierUserId: number | undefined;
+    lastModificationTime: DateTime | undefined;
+    deleterUserId: number | undefined;
+    deletionTime: DateTime | undefined;
+    isDeleted: boolean;
+    isActive: boolean;
+    id: number;
+}
+
+export class Gender implements IGender {
+    title!: string | undefined;
+    fabricTypies!: FabricType[] | undefined;
+    creatorUserId!: number | undefined;
+    creationTime!: DateTime;
+    lastModifierUserId!: number | undefined;
+    lastModificationTime!: DateTime | undefined;
+    deleterUserId!: number | undefined;
+    deletionTime!: DateTime | undefined;
+    isDeleted!: boolean;
+    isActive!: boolean;
+    id!: number;
+
+    constructor(data?: IGender) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.title = _data["title"];
+            if (Array.isArray(_data["fabricTypies"])) {
+                this.fabricTypies = [] as any;
+                for (let item of _data["fabricTypies"])
+                    this.fabricTypies!.push(FabricType.fromJS(item));
+            }
+            this.creatorUserId = _data["creatorUserId"];
+            this.creationTime = _data["creationTime"] ? DateTime.fromISO(_data["creationTime"].toString()) : <any>undefined;
+            this.lastModifierUserId = _data["lastModifierUserId"];
+            this.lastModificationTime = _data["lastModificationTime"] ? DateTime.fromISO(_data["lastModificationTime"].toString()) : <any>undefined;
+            this.deleterUserId = _data["deleterUserId"];
+            this.deletionTime = _data["deletionTime"] ? DateTime.fromISO(_data["deletionTime"].toString()) : <any>undefined;
+            this.isDeleted = _data["isDeleted"];
+            this.isActive = _data["isActive"];
+            this.id = _data["id"];
+        }
+    }
+
+    static fromJS(data: any): Gender {
+        data = typeof data === 'object' ? data : {};
+        let result = new Gender();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["title"] = this.title;
+        if (Array.isArray(this.fabricTypies)) {
+            data["fabricTypies"] = [];
+            for (let item of this.fabricTypies)
+                data["fabricTypies"].push(item.toJSON());
+        }
+        data["creatorUserId"] = this.creatorUserId;
+        data["creationTime"] = this.creationTime ? this.creationTime.toString() : <any>undefined;
+        data["lastModifierUserId"] = this.lastModifierUserId;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toString() : <any>undefined;
+        data["deleterUserId"] = this.deleterUserId;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime.toString() : <any>undefined;
+        data["isDeleted"] = this.isDeleted;
+        data["isActive"] = this.isActive;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IGender {
+    title: string | undefined;
+    fabricTypies: FabricType[] | undefined;
+    creatorUserId: number | undefined;
+    creationTime: DateTime;
+    lastModifierUserId: number | undefined;
+    lastModificationTime: DateTime | undefined;
+    deleterUserId: number | undefined;
+    deletionTime: DateTime | undefined;
+    isDeleted: boolean;
+    isActive: boolean;
+    id: number;
+}
+
+export class Seamstress implements ISeamstress {
+    firstName!: string | undefined;
+    lastName!: string | undefined;
+    nationalCode!: string | undefined;
+    phone!: string | undefined;
+    address!: string | undefined;
+    sewnPieces!: SewnPiece[] | undefined;
+    creatorUserId!: number | undefined;
+    creationTime!: DateTime;
+    lastModifierUserId!: number | undefined;
+    lastModificationTime!: DateTime | undefined;
+    deleterUserId!: number | undefined;
+    deletionTime!: DateTime | undefined;
+    isDeleted!: boolean;
+    isActive!: boolean;
+    id!: number;
+
+    constructor(data?: ISeamstress) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.firstName = _data["firstName"];
+            this.lastName = _data["lastName"];
+            this.nationalCode = _data["nationalCode"];
+            this.phone = _data["phone"];
+            this.address = _data["address"];
+            if (Array.isArray(_data["sewnPieces"])) {
+                this.sewnPieces = [] as any;
+                for (let item of _data["sewnPieces"])
+                    this.sewnPieces!.push(SewnPiece.fromJS(item));
+            }
+            this.creatorUserId = _data["creatorUserId"];
+            this.creationTime = _data["creationTime"] ? DateTime.fromISO(_data["creationTime"].toString()) : <any>undefined;
+            this.lastModifierUserId = _data["lastModifierUserId"];
+            this.lastModificationTime = _data["lastModificationTime"] ? DateTime.fromISO(_data["lastModificationTime"].toString()) : <any>undefined;
+            this.deleterUserId = _data["deleterUserId"];
+            this.deletionTime = _data["deletionTime"] ? DateTime.fromISO(_data["deletionTime"].toString()) : <any>undefined;
+            this.isDeleted = _data["isDeleted"];
+            this.isActive = _data["isActive"];
+            this.id = _data["id"];
+        }
+    }
+
+    static fromJS(data: any): Seamstress {
+        data = typeof data === 'object' ? data : {};
+        let result = new Seamstress();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["firstName"] = this.firstName;
+        data["lastName"] = this.lastName;
+        data["nationalCode"] = this.nationalCode;
+        data["phone"] = this.phone;
+        data["address"] = this.address;
+        if (Array.isArray(this.sewnPieces)) {
+            data["sewnPieces"] = [];
+            for (let item of this.sewnPieces)
+                data["sewnPieces"].push(item.toJSON());
+        }
+        data["creatorUserId"] = this.creatorUserId;
+        data["creationTime"] = this.creationTime ? this.creationTime.toString() : <any>undefined;
+        data["lastModifierUserId"] = this.lastModifierUserId;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toString() : <any>undefined;
+        data["deleterUserId"] = this.deleterUserId;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime.toString() : <any>undefined;
+        data["isDeleted"] = this.isDeleted;
+        data["isActive"] = this.isActive;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface ISeamstress {
+    firstName: string | undefined;
+    lastName: string | undefined;
+    nationalCode: string | undefined;
+    phone: string | undefined;
+    address: string | undefined;
+    sewnPieces: SewnPiece[] | undefined;
+    creatorUserId: number | undefined;
+    creationTime: DateTime;
+    lastModifierUserId: number | undefined;
+    lastModificationTime: DateTime | undefined;
+    deleterUserId: number | undefined;
+    deletionTime: DateTime | undefined;
+    isDeleted: boolean;
+    isActive: boolean;
+    id: number;
+}
+
+export class FabricCut implements IFabricCut {
+    code!: string | undefined;
+    title!: string | undefined;
+    size!: string | undefined;
+    price!: number;
+    sewnPieces!: SewnPiece[] | undefined;
+    creatorUserId!: number | undefined;
+    creationTime!: DateTime;
+    lastModifierUserId!: number | undefined;
+    lastModificationTime!: DateTime | undefined;
+    deleterUserId!: number | undefined;
+    deletionTime!: DateTime | undefined;
+    isDeleted!: boolean;
+    isActive!: boolean;
+    id!: number;
+
+    constructor(data?: IFabricCut) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.code = _data["code"];
+            this.title = _data["title"];
+            this.size = _data["size"];
+            this.price = _data["price"];
+            if (Array.isArray(_data["sewnPieces"])) {
+                this.sewnPieces = [] as any;
+                for (let item of _data["sewnPieces"])
+                    this.sewnPieces!.push(SewnPiece.fromJS(item));
+            }
+            this.creatorUserId = _data["creatorUserId"];
+            this.creationTime = _data["creationTime"] ? DateTime.fromISO(_data["creationTime"].toString()) : <any>undefined;
+            this.lastModifierUserId = _data["lastModifierUserId"];
+            this.lastModificationTime = _data["lastModificationTime"] ? DateTime.fromISO(_data["lastModificationTime"].toString()) : <any>undefined;
+            this.deleterUserId = _data["deleterUserId"];
+            this.deletionTime = _data["deletionTime"] ? DateTime.fromISO(_data["deletionTime"].toString()) : <any>undefined;
+            this.isDeleted = _data["isDeleted"];
+            this.isActive = _data["isActive"];
+            this.id = _data["id"];
+        }
+    }
+
+    static fromJS(data: any): FabricCut {
+        data = typeof data === 'object' ? data : {};
+        let result = new FabricCut();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
+        data["title"] = this.title;
+        data["size"] = this.size;
+        data["price"] = this.price;
+        if (Array.isArray(this.sewnPieces)) {
+            data["sewnPieces"] = [];
+            for (let item of this.sewnPieces)
+                data["sewnPieces"].push(item.toJSON());
+        }
+        data["creatorUserId"] = this.creatorUserId;
+        data["creationTime"] = this.creationTime ? this.creationTime.toString() : <any>undefined;
+        data["lastModifierUserId"] = this.lastModifierUserId;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toString() : <any>undefined;
+        data["deleterUserId"] = this.deleterUserId;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime.toString() : <any>undefined;
+        data["isDeleted"] = this.isDeleted;
+        data["isActive"] = this.isActive;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IFabricCut {
+    code: string | undefined;
+    title: string | undefined;
+    size: string | undefined;
+    price: number;
+    sewnPieces: SewnPiece[] | undefined;
+    creatorUserId: number | undefined;
+    creationTime: DateTime;
+    lastModifierUserId: number | undefined;
+    lastModificationTime: DateTime | undefined;
+    deleterUserId: number | undefined;
+    deletionTime: DateTime | undefined;
+    isDeleted: boolean;
+    isActive: boolean;
+    id: number;
+}
+
+export class SewnPiece implements ISewnPiece {
+    doneDateEn!: DateTime;
+    doneDateFa!: string | undefined;
+    seamstress!: Seamstress;
+    fabricRoll!: FabricRoll;
+    fabricCut!: FabricCut;
+    count!: number;
+    creatorUserId!: number | undefined;
+    creationTime!: DateTime;
+    lastModifierUserId!: number | undefined;
+    lastModificationTime!: DateTime | undefined;
+    deleterUserId!: number | undefined;
+    deletionTime!: DateTime | undefined;
+    isDeleted!: boolean;
+    isActive!: boolean;
+    id!: number;
+
+    constructor(data?: ISewnPiece) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.doneDateEn = _data["doneDateEn"] ? DateTime.fromISO(_data["doneDateEn"].toString()) : <any>undefined;
+            this.doneDateFa = _data["doneDateFa"];
+            this.seamstress = _data["seamstress"] ? Seamstress.fromJS(_data["seamstress"]) : <any>undefined;
+            this.fabricRoll = _data["fabricRoll"] ? FabricRoll.fromJS(_data["fabricRoll"]) : <any>undefined;
+            this.fabricCut = _data["fabricCut"] ? FabricCut.fromJS(_data["fabricCut"]) : <any>undefined;
+            this.count = _data["count"];
+            this.creatorUserId = _data["creatorUserId"];
+            this.creationTime = _data["creationTime"] ? DateTime.fromISO(_data["creationTime"].toString()) : <any>undefined;
+            this.lastModifierUserId = _data["lastModifierUserId"];
+            this.lastModificationTime = _data["lastModificationTime"] ? DateTime.fromISO(_data["lastModificationTime"].toString()) : <any>undefined;
+            this.deleterUserId = _data["deleterUserId"];
+            this.deletionTime = _data["deletionTime"] ? DateTime.fromISO(_data["deletionTime"].toString()) : <any>undefined;
+            this.isDeleted = _data["isDeleted"];
+            this.isActive = _data["isActive"];
+            this.id = _data["id"];
+        }
+    }
+
+    static fromJS(data: any): SewnPiece {
+        data = typeof data === 'object' ? data : {};
+        let result = new SewnPiece();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["doneDateEn"] = this.doneDateEn ? this.doneDateEn.toString() : <any>undefined;
+        data["doneDateFa"] = this.doneDateFa;
+        data["seamstress"] = this.seamstress ? this.seamstress.toJSON() : <any>undefined;
+        data["fabricRoll"] = this.fabricRoll ? this.fabricRoll.toJSON() : <any>undefined;
+        data["fabricCut"] = this.fabricCut ? this.fabricCut.toJSON() : <any>undefined;
+        data["count"] = this.count;
+        data["creatorUserId"] = this.creatorUserId;
+        data["creationTime"] = this.creationTime ? this.creationTime.toString() : <any>undefined;
+        data["lastModifierUserId"] = this.lastModifierUserId;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toString() : <any>undefined;
+        data["deleterUserId"] = this.deleterUserId;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime.toString() : <any>undefined;
+        data["isDeleted"] = this.isDeleted;
+        data["isActive"] = this.isActive;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface ISewnPiece {
+    doneDateEn: DateTime;
+    doneDateFa: string | undefined;
+    seamstress: Seamstress;
+    fabricRoll: FabricRoll;
+    fabricCut: FabricCut;
+    count: number;
+    creatorUserId: number | undefined;
+    creationTime: DateTime;
+    lastModifierUserId: number | undefined;
+    lastModificationTime: DateTime | undefined;
+    deleterUserId: number | undefined;
+    deletionTime: DateTime | undefined;
+    isDeleted: boolean;
+    isActive: boolean;
+    id: number;
+}
+
+export class FabricRoll implements IFabricRoll {
+    code!: string | undefined;
+    fabricType!: FabricType;
+    count!: number;
+    sewnPieces!: SewnPiece[] | undefined;
+    creatorUserId!: number | undefined;
+    creationTime!: DateTime;
+    lastModifierUserId!: number | undefined;
+    lastModificationTime!: DateTime | undefined;
+    deleterUserId!: number | undefined;
+    deletionTime!: DateTime | undefined;
+    isDeleted!: boolean;
+    isActive!: boolean;
+    id!: number;
+
+    constructor(data?: IFabricRoll) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.code = _data["code"];
+            this.fabricType = _data["fabricType"] ? FabricType.fromJS(_data["fabricType"]) : <any>undefined;
+            this.count = _data["count"];
+            if (Array.isArray(_data["sewnPieces"])) {
+                this.sewnPieces = [] as any;
+                for (let item of _data["sewnPieces"])
+                    this.sewnPieces!.push(SewnPiece.fromJS(item));
+            }
+            this.creatorUserId = _data["creatorUserId"];
+            this.creationTime = _data["creationTime"] ? DateTime.fromISO(_data["creationTime"].toString()) : <any>undefined;
+            this.lastModifierUserId = _data["lastModifierUserId"];
+            this.lastModificationTime = _data["lastModificationTime"] ? DateTime.fromISO(_data["lastModificationTime"].toString()) : <any>undefined;
+            this.deleterUserId = _data["deleterUserId"];
+            this.deletionTime = _data["deletionTime"] ? DateTime.fromISO(_data["deletionTime"].toString()) : <any>undefined;
+            this.isDeleted = _data["isDeleted"];
+            this.isActive = _data["isActive"];
+            this.id = _data["id"];
+        }
+    }
+
+    static fromJS(data: any): FabricRoll {
+        data = typeof data === 'object' ? data : {};
+        let result = new FabricRoll();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
+        data["fabricType"] = this.fabricType ? this.fabricType.toJSON() : <any>undefined;
+        data["count"] = this.count;
+        if (Array.isArray(this.sewnPieces)) {
+            data["sewnPieces"] = [];
+            for (let item of this.sewnPieces)
+                data["sewnPieces"].push(item.toJSON());
+        }
+        data["creatorUserId"] = this.creatorUserId;
+        data["creationTime"] = this.creationTime ? this.creationTime.toString() : <any>undefined;
+        data["lastModifierUserId"] = this.lastModifierUserId;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toString() : <any>undefined;
+        data["deleterUserId"] = this.deleterUserId;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime.toString() : <any>undefined;
+        data["isDeleted"] = this.isDeleted;
+        data["isActive"] = this.isActive;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IFabricRoll {
+    code: string | undefined;
+    fabricType: FabricType;
+    count: number;
+    sewnPieces: SewnPiece[] | undefined;
+    creatorUserId: number | undefined;
+    creationTime: DateTime;
+    lastModifierUserId: number | undefined;
+    lastModificationTime: DateTime | undefined;
+    deleterUserId: number | undefined;
+    deletionTime: DateTime | undefined;
+    isDeleted: boolean;
+    isActive: boolean;
+    id: number;
+}
+
+export class FabricType implements IFabricType {
+    title!: string | undefined;
+    fabricMaterial!: FabricMaterial;
+    gender!: Gender;
+    color!: string | undefined;
+    factory!: string | undefined;
+    fabricRolles!: FabricRoll[] | undefined;
+    creatorUserId!: number | undefined;
+    creationTime!: DateTime;
+    lastModifierUserId!: number | undefined;
+    lastModificationTime!: DateTime | undefined;
+    deleterUserId!: number | undefined;
+    deletionTime!: DateTime | undefined;
+    isDeleted!: boolean;
+    isActive!: boolean;
+    id!: number;
+
+    constructor(data?: IFabricType) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.title = _data["title"];
+            this.fabricMaterial = _data["fabricMaterial"] ? FabricMaterial.fromJS(_data["fabricMaterial"]) : <any>undefined;
+            this.gender = _data["gender"] ? Gender.fromJS(_data["gender"]) : <any>undefined;
+            this.color = _data["color"];
+            this.factory = _data["factory"];
+            if (Array.isArray(_data["fabricRolles"])) {
+                this.fabricRolles = [] as any;
+                for (let item of _data["fabricRolles"])
+                    this.fabricRolles!.push(FabricRoll.fromJS(item));
+            }
+            this.creatorUserId = _data["creatorUserId"];
+            this.creationTime = _data["creationTime"] ? DateTime.fromISO(_data["creationTime"].toString()) : <any>undefined;
+            this.lastModifierUserId = _data["lastModifierUserId"];
+            this.lastModificationTime = _data["lastModificationTime"] ? DateTime.fromISO(_data["lastModificationTime"].toString()) : <any>undefined;
+            this.deleterUserId = _data["deleterUserId"];
+            this.deletionTime = _data["deletionTime"] ? DateTime.fromISO(_data["deletionTime"].toString()) : <any>undefined;
+            this.isDeleted = _data["isDeleted"];
+            this.isActive = _data["isActive"];
+            this.id = _data["id"];
+        }
+    }
+
+    static fromJS(data: any): FabricType {
+        data = typeof data === 'object' ? data : {};
+        let result = new FabricType();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["title"] = this.title;
+        data["fabricMaterial"] = this.fabricMaterial ? this.fabricMaterial.toJSON() : <any>undefined;
+        data["gender"] = this.gender ? this.gender.toJSON() : <any>undefined;
+        data["color"] = this.color;
+        data["factory"] = this.factory;
+        if (Array.isArray(this.fabricRolles)) {
+            data["fabricRolles"] = [];
+            for (let item of this.fabricRolles)
+                data["fabricRolles"].push(item.toJSON());
+        }
+        data["creatorUserId"] = this.creatorUserId;
+        data["creationTime"] = this.creationTime ? this.creationTime.toString() : <any>undefined;
+        data["lastModifierUserId"] = this.lastModifierUserId;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toString() : <any>undefined;
+        data["deleterUserId"] = this.deleterUserId;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime.toString() : <any>undefined;
+        data["isDeleted"] = this.isDeleted;
+        data["isActive"] = this.isActive;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IFabricType {
+    title: string | undefined;
+    fabricMaterial: FabricMaterial;
+    gender: Gender;
+    color: string | undefined;
+    factory: string | undefined;
+    fabricRolles: FabricRoll[] | undefined;
+    creatorUserId: number | undefined;
+    creationTime: DateTime;
+    lastModifierUserId: number | undefined;
+    lastModificationTime: DateTime | undefined;
+    deleterUserId: number | undefined;
+    deletionTime: DateTime | undefined;
+    isDeleted: boolean;
+    isActive: boolean;
+    id: number;
+}
+
+export class FabricMaterialDto implements IFabricMaterialDto {
+    title!: string | undefined;
+    fabricTypies!: FabricType[] | undefined;
+
+    constructor(data?: IFabricMaterialDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.title = _data["title"];
+            if (Array.isArray(_data["fabricTypies"])) {
+                this.fabricTypies = [] as any;
+                for (let item of _data["fabricTypies"])
+                    this.fabricTypies!.push(FabricType.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): FabricMaterialDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new FabricMaterialDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["title"] = this.title;
+        if (Array.isArray(this.fabricTypies)) {
+            data["fabricTypies"] = [];
+            for (let item of this.fabricTypies)
+                data["fabricTypies"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IFabricMaterialDto {
+    title: string | undefined;
+    fabricTypies: FabricType[] | undefined;
+}
+
+export class ExpressionOfFuncOfFabricMaterialBoolean implements IExpressionOfFuncOfFabricMaterialBoolean {
+    readonly type!: string | undefined;
+    nodeType!: ExpressionType;
+    readonly parameters!: ParameterExpression[] | undefined;
+    readonly name!: string | undefined;
+    body!: Expression;
+    readonly returnType!: string | undefined;
+    readonly tailCall!: boolean;
+    readonly canReduce!: boolean;
+
+    constructor(data?: IExpressionOfFuncOfFabricMaterialBoolean) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            (<any>this).type = _data["type"];
+            this.nodeType = _data["nodeType"];
+            if (Array.isArray(_data["parameters"])) {
+                (<any>this).parameters = [] as any;
+                for (let item of _data["parameters"])
+                    (<any>this).parameters!.push(ParameterExpression.fromJS(item));
+            }
+            (<any>this).name = _data["name"];
+            this.body = _data["body"] ? Expression.fromJS(_data["body"]) : <any>undefined;
+            (<any>this).returnType = _data["returnType"];
+            (<any>this).tailCall = _data["tailCall"];
+            (<any>this).canReduce = _data["canReduce"];
+        }
+    }
+
+    static fromJS(data: any): ExpressionOfFuncOfFabricMaterialBoolean {
+        data = typeof data === 'object' ? data : {};
+        let result = new ExpressionOfFuncOfFabricMaterialBoolean();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["type"] = this.type;
+        data["nodeType"] = this.nodeType;
+        if (Array.isArray(this.parameters)) {
+            data["parameters"] = [];
+            for (let item of this.parameters)
+                data["parameters"].push(item.toJSON());
+        }
+        data["name"] = this.name;
+        data["body"] = this.body ? this.body.toJSON() : <any>undefined;
+        data["returnType"] = this.returnType;
+        data["tailCall"] = this.tailCall;
+        data["canReduce"] = this.canReduce;
+        return data; 
+    }
+}
+
+export interface IExpressionOfFuncOfFabricMaterialBoolean {
+    type: string | undefined;
+    nodeType: ExpressionType;
+    parameters: ParameterExpression[] | undefined;
+    name: string | undefined;
+    body: Expression;
+    returnType: string | undefined;
+    tailCall: boolean;
+    canReduce: boolean;
+}
+
+export class FabricRollDto implements IFabricRollDto {
+    code!: string | undefined;
+    fabricType!: FabricType;
+    count!: number;
+    sewnPieces!: SewnPiece[] | undefined;
+
+    constructor(data?: IFabricRollDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.code = _data["code"];
+            this.fabricType = _data["fabricType"] ? FabricType.fromJS(_data["fabricType"]) : <any>undefined;
+            this.count = _data["count"];
+            if (Array.isArray(_data["sewnPieces"])) {
+                this.sewnPieces = [] as any;
+                for (let item of _data["sewnPieces"])
+                    this.sewnPieces!.push(SewnPiece.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): FabricRollDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new FabricRollDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
+        data["fabricType"] = this.fabricType ? this.fabricType.toJSON() : <any>undefined;
+        data["count"] = this.count;
+        if (Array.isArray(this.sewnPieces)) {
+            data["sewnPieces"] = [];
+            for (let item of this.sewnPieces)
+                data["sewnPieces"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IFabricRollDto {
+    code: string | undefined;
+    fabricType: FabricType;
+    count: number;
+    sewnPieces: SewnPiece[] | undefined;
+}
+
+export class ExpressionOfFuncOfFabricRollBoolean implements IExpressionOfFuncOfFabricRollBoolean {
+    readonly type!: string | undefined;
+    nodeType!: ExpressionType;
+    readonly parameters!: ParameterExpression[] | undefined;
+    readonly name!: string | undefined;
+    body!: Expression;
+    readonly returnType!: string | undefined;
+    readonly tailCall!: boolean;
+    readonly canReduce!: boolean;
+
+    constructor(data?: IExpressionOfFuncOfFabricRollBoolean) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            (<any>this).type = _data["type"];
+            this.nodeType = _data["nodeType"];
+            if (Array.isArray(_data["parameters"])) {
+                (<any>this).parameters = [] as any;
+                for (let item of _data["parameters"])
+                    (<any>this).parameters!.push(ParameterExpression.fromJS(item));
+            }
+            (<any>this).name = _data["name"];
+            this.body = _data["body"] ? Expression.fromJS(_data["body"]) : <any>undefined;
+            (<any>this).returnType = _data["returnType"];
+            (<any>this).tailCall = _data["tailCall"];
+            (<any>this).canReduce = _data["canReduce"];
+        }
+    }
+
+    static fromJS(data: any): ExpressionOfFuncOfFabricRollBoolean {
+        data = typeof data === 'object' ? data : {};
+        let result = new ExpressionOfFuncOfFabricRollBoolean();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["type"] = this.type;
+        data["nodeType"] = this.nodeType;
+        if (Array.isArray(this.parameters)) {
+            data["parameters"] = [];
+            for (let item of this.parameters)
+                data["parameters"].push(item.toJSON());
+        }
+        data["name"] = this.name;
+        data["body"] = this.body ? this.body.toJSON() : <any>undefined;
+        data["returnType"] = this.returnType;
+        data["tailCall"] = this.tailCall;
+        data["canReduce"] = this.canReduce;
+        return data; 
+    }
+}
+
+export interface IExpressionOfFuncOfFabricRollBoolean {
+    type: string | undefined;
+    nodeType: ExpressionType;
+    parameters: ParameterExpression[] | undefined;
+    name: string | undefined;
+    body: Expression;
+    returnType: string | undefined;
+    tailCall: boolean;
+    canReduce: boolean;
+}
+
+export class FabricTypeDto implements IFabricTypeDto {
+    title!: string | undefined;
+    fabricMaterial!: FabricMaterial;
+    gender!: Gender;
+    color!: string | undefined;
+    factory!: string | undefined;
+
+    constructor(data?: IFabricTypeDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.title = _data["title"];
+            this.fabricMaterial = _data["fabricMaterial"] ? FabricMaterial.fromJS(_data["fabricMaterial"]) : <any>undefined;
+            this.gender = _data["gender"] ? Gender.fromJS(_data["gender"]) : <any>undefined;
+            this.color = _data["color"];
+            this.factory = _data["factory"];
+        }
+    }
+
+    static fromJS(data: any): FabricTypeDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new FabricTypeDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["title"] = this.title;
+        data["fabricMaterial"] = this.fabricMaterial ? this.fabricMaterial.toJSON() : <any>undefined;
+        data["gender"] = this.gender ? this.gender.toJSON() : <any>undefined;
+        data["color"] = this.color;
+        data["factory"] = this.factory;
+        return data; 
+    }
+}
+
+export interface IFabricTypeDto {
+    title: string | undefined;
+    fabricMaterial: FabricMaterial;
+    gender: Gender;
+    color: string | undefined;
+    factory: string | undefined;
+}
+
+export class ExpressionOfFuncOfFabricTypeBoolean implements IExpressionOfFuncOfFabricTypeBoolean {
+    readonly type!: string | undefined;
+    nodeType!: ExpressionType;
+    readonly parameters!: ParameterExpression[] | undefined;
+    readonly name!: string | undefined;
+    body!: Expression;
+    readonly returnType!: string | undefined;
+    readonly tailCall!: boolean;
+    readonly canReduce!: boolean;
+
+    constructor(data?: IExpressionOfFuncOfFabricTypeBoolean) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            (<any>this).type = _data["type"];
+            this.nodeType = _data["nodeType"];
+            if (Array.isArray(_data["parameters"])) {
+                (<any>this).parameters = [] as any;
+                for (let item of _data["parameters"])
+                    (<any>this).parameters!.push(ParameterExpression.fromJS(item));
+            }
+            (<any>this).name = _data["name"];
+            this.body = _data["body"] ? Expression.fromJS(_data["body"]) : <any>undefined;
+            (<any>this).returnType = _data["returnType"];
+            (<any>this).tailCall = _data["tailCall"];
+            (<any>this).canReduce = _data["canReduce"];
+        }
+    }
+
+    static fromJS(data: any): ExpressionOfFuncOfFabricTypeBoolean {
+        data = typeof data === 'object' ? data : {};
+        let result = new ExpressionOfFuncOfFabricTypeBoolean();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["type"] = this.type;
+        data["nodeType"] = this.nodeType;
+        if (Array.isArray(this.parameters)) {
+            data["parameters"] = [];
+            for (let item of this.parameters)
+                data["parameters"].push(item.toJSON());
+        }
+        data["name"] = this.name;
+        data["body"] = this.body ? this.body.toJSON() : <any>undefined;
+        data["returnType"] = this.returnType;
+        data["tailCall"] = this.tailCall;
+        data["canReduce"] = this.canReduce;
+        return data; 
+    }
+}
+
+export interface IExpressionOfFuncOfFabricTypeBoolean {
+    type: string | undefined;
+    nodeType: ExpressionType;
+    parameters: ParameterExpression[] | undefined;
+    name: string | undefined;
+    body: Expression;
+    returnType: string | undefined;
+    tailCall: boolean;
+    canReduce: boolean;
+}
+
 export class CreateFriendshipRequestInput implements ICreateFriendshipRequestInput {
     userId!: number;
     tenantId!: number | undefined;
@@ -18572,6 +22138,126 @@ export class AcceptFriendshipRequestInput implements IAcceptFriendshipRequestInp
 export interface IAcceptFriendshipRequestInput {
     userId: number;
     tenantId: number | undefined;
+}
+
+export class GenderDto implements IGenderDto {
+    title!: string | undefined;
+    fabricTypies!: FabricType[] | undefined;
+
+    constructor(data?: IGenderDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.title = _data["title"];
+            if (Array.isArray(_data["fabricTypies"])) {
+                this.fabricTypies = [] as any;
+                for (let item of _data["fabricTypies"])
+                    this.fabricTypies!.push(FabricType.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): GenderDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new GenderDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["title"] = this.title;
+        if (Array.isArray(this.fabricTypies)) {
+            data["fabricTypies"] = [];
+            for (let item of this.fabricTypies)
+                data["fabricTypies"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IGenderDto {
+    title: string | undefined;
+    fabricTypies: FabricType[] | undefined;
+}
+
+export class ExpressionOfFuncOfGenderBoolean implements IExpressionOfFuncOfGenderBoolean {
+    readonly type!: string | undefined;
+    nodeType!: ExpressionType;
+    readonly parameters!: ParameterExpression[] | undefined;
+    readonly name!: string | undefined;
+    body!: Expression;
+    readonly returnType!: string | undefined;
+    readonly tailCall!: boolean;
+    readonly canReduce!: boolean;
+
+    constructor(data?: IExpressionOfFuncOfGenderBoolean) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            (<any>this).type = _data["type"];
+            this.nodeType = _data["nodeType"];
+            if (Array.isArray(_data["parameters"])) {
+                (<any>this).parameters = [] as any;
+                for (let item of _data["parameters"])
+                    (<any>this).parameters!.push(ParameterExpression.fromJS(item));
+            }
+            (<any>this).name = _data["name"];
+            this.body = _data["body"] ? Expression.fromJS(_data["body"]) : <any>undefined;
+            (<any>this).returnType = _data["returnType"];
+            (<any>this).tailCall = _data["tailCall"];
+            (<any>this).canReduce = _data["canReduce"];
+        }
+    }
+
+    static fromJS(data: any): ExpressionOfFuncOfGenderBoolean {
+        data = typeof data === 'object' ? data : {};
+        let result = new ExpressionOfFuncOfGenderBoolean();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["type"] = this.type;
+        data["nodeType"] = this.nodeType;
+        if (Array.isArray(this.parameters)) {
+            data["parameters"] = [];
+            for (let item of this.parameters)
+                data["parameters"].push(item.toJSON());
+        }
+        data["name"] = this.name;
+        data["body"] = this.body ? this.body.toJSON() : <any>undefined;
+        data["returnType"] = this.returnType;
+        data["tailCall"] = this.tailCall;
+        data["canReduce"] = this.canReduce;
+        return data; 
+    }
+}
+
+export interface IExpressionOfFuncOfGenderBoolean {
+    type: string | undefined;
+    nodeType: ExpressionType;
+    parameters: ParameterExpression[] | undefined;
+    name: string | undefined;
+    body: Expression;
+    returnType: string | undefined;
+    tailCall: boolean;
+    canReduce: boolean;
 }
 
 export class TopStatsData implements ITopStatsData {
@@ -23422,6 +27108,826 @@ export interface ICreateOrUpdateRoleInput {
     grantedPermissionNames: string[];
 }
 
+export class SalineStone implements ISalineStone {
+    name!: number;
+    phone!: string | undefined;
+    address!: string | undefined;
+    salineStoneOrders!: SalineStoneOrder[] | undefined;
+    creatorUserId!: number | undefined;
+    creationTime!: DateTime;
+    lastModifierUserId!: number | undefined;
+    lastModificationTime!: DateTime | undefined;
+    deleterUserId!: number | undefined;
+    deletionTime!: DateTime | undefined;
+    isDeleted!: boolean;
+    isActive!: boolean;
+    id!: number;
+
+    constructor(data?: ISalineStone) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.phone = _data["phone"];
+            this.address = _data["address"];
+            if (Array.isArray(_data["salineStoneOrders"])) {
+                this.salineStoneOrders = [] as any;
+                for (let item of _data["salineStoneOrders"])
+                    this.salineStoneOrders!.push(SalineStoneOrder.fromJS(item));
+            }
+            this.creatorUserId = _data["creatorUserId"];
+            this.creationTime = _data["creationTime"] ? DateTime.fromISO(_data["creationTime"].toString()) : <any>undefined;
+            this.lastModifierUserId = _data["lastModifierUserId"];
+            this.lastModificationTime = _data["lastModificationTime"] ? DateTime.fromISO(_data["lastModificationTime"].toString()) : <any>undefined;
+            this.deleterUserId = _data["deleterUserId"];
+            this.deletionTime = _data["deletionTime"] ? DateTime.fromISO(_data["deletionTime"].toString()) : <any>undefined;
+            this.isDeleted = _data["isDeleted"];
+            this.isActive = _data["isActive"];
+            this.id = _data["id"];
+        }
+    }
+
+    static fromJS(data: any): SalineStone {
+        data = typeof data === 'object' ? data : {};
+        let result = new SalineStone();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["phone"] = this.phone;
+        data["address"] = this.address;
+        if (Array.isArray(this.salineStoneOrders)) {
+            data["salineStoneOrders"] = [];
+            for (let item of this.salineStoneOrders)
+                data["salineStoneOrders"].push(item.toJSON());
+        }
+        data["creatorUserId"] = this.creatorUserId;
+        data["creationTime"] = this.creationTime ? this.creationTime.toString() : <any>undefined;
+        data["lastModifierUserId"] = this.lastModifierUserId;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toString() : <any>undefined;
+        data["deleterUserId"] = this.deleterUserId;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime.toString() : <any>undefined;
+        data["isDeleted"] = this.isDeleted;
+        data["isActive"] = this.isActive;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface ISalineStone {
+    name: number;
+    phone: string | undefined;
+    address: string | undefined;
+    salineStoneOrders: SalineStoneOrder[] | undefined;
+    creatorUserId: number | undefined;
+    creationTime: DateTime;
+    lastModifierUserId: number | undefined;
+    lastModificationTime: DateTime | undefined;
+    deleterUserId: number | undefined;
+    deletionTime: DateTime | undefined;
+    isDeleted: boolean;
+    isActive: boolean;
+    id: number;
+}
+
+export class SalineStoneOrderItem implements ISalineStoneOrderItem {
+    salineStoneOrder!: SalineStoneOrder;
+    sewnPiece!: SewnPiece;
+    numberSent!: number;
+    numberReceived!: number;
+    numberStoke!: number;
+    creatorUserId!: number | undefined;
+    creationTime!: DateTime;
+    lastModifierUserId!: number | undefined;
+    lastModificationTime!: DateTime | undefined;
+    deleterUserId!: number | undefined;
+    deletionTime!: DateTime | undefined;
+    isDeleted!: boolean;
+    isActive!: boolean;
+    id!: number;
+
+    constructor(data?: ISalineStoneOrderItem) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.salineStoneOrder = _data["salineStoneOrder"] ? SalineStoneOrder.fromJS(_data["salineStoneOrder"]) : <any>undefined;
+            this.sewnPiece = _data["sewnPiece"] ? SewnPiece.fromJS(_data["sewnPiece"]) : <any>undefined;
+            this.numberSent = _data["numberSent"];
+            this.numberReceived = _data["numberReceived"];
+            this.numberStoke = _data["numberStoke"];
+            this.creatorUserId = _data["creatorUserId"];
+            this.creationTime = _data["creationTime"] ? DateTime.fromISO(_data["creationTime"].toString()) : <any>undefined;
+            this.lastModifierUserId = _data["lastModifierUserId"];
+            this.lastModificationTime = _data["lastModificationTime"] ? DateTime.fromISO(_data["lastModificationTime"].toString()) : <any>undefined;
+            this.deleterUserId = _data["deleterUserId"];
+            this.deletionTime = _data["deletionTime"] ? DateTime.fromISO(_data["deletionTime"].toString()) : <any>undefined;
+            this.isDeleted = _data["isDeleted"];
+            this.isActive = _data["isActive"];
+            this.id = _data["id"];
+        }
+    }
+
+    static fromJS(data: any): SalineStoneOrderItem {
+        data = typeof data === 'object' ? data : {};
+        let result = new SalineStoneOrderItem();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["salineStoneOrder"] = this.salineStoneOrder ? this.salineStoneOrder.toJSON() : <any>undefined;
+        data["sewnPiece"] = this.sewnPiece ? this.sewnPiece.toJSON() : <any>undefined;
+        data["numberSent"] = this.numberSent;
+        data["numberReceived"] = this.numberReceived;
+        data["numberStoke"] = this.numberStoke;
+        data["creatorUserId"] = this.creatorUserId;
+        data["creationTime"] = this.creationTime ? this.creationTime.toString() : <any>undefined;
+        data["lastModifierUserId"] = this.lastModifierUserId;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toString() : <any>undefined;
+        data["deleterUserId"] = this.deleterUserId;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime.toString() : <any>undefined;
+        data["isDeleted"] = this.isDeleted;
+        data["isActive"] = this.isActive;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface ISalineStoneOrderItem {
+    salineStoneOrder: SalineStoneOrder;
+    sewnPiece: SewnPiece;
+    numberSent: number;
+    numberReceived: number;
+    numberStoke: number;
+    creatorUserId: number | undefined;
+    creationTime: DateTime;
+    lastModifierUserId: number | undefined;
+    lastModificationTime: DateTime | undefined;
+    deleterUserId: number | undefined;
+    deletionTime: DateTime | undefined;
+    isDeleted: boolean;
+    isActive: boolean;
+    id: number;
+}
+
+export class SalineStoneOrder implements ISalineStoneOrder {
+    salineStone!: SalineStone;
+    sendDateEn!: DateTime;
+    sendDateFa!: string | undefined;
+    receivedDateEn!: DateTime;
+    receivedDateFa!: string | undefined;
+    totalPrice!: number;
+    deductedPrice!: number;
+    salineStoneOrderItems!: SalineStoneOrderItem[] | undefined;
+    creatorUserId!: number | undefined;
+    creationTime!: DateTime;
+    lastModifierUserId!: number | undefined;
+    lastModificationTime!: DateTime | undefined;
+    deleterUserId!: number | undefined;
+    deletionTime!: DateTime | undefined;
+    isDeleted!: boolean;
+    isActive!: boolean;
+    id!: number;
+
+    constructor(data?: ISalineStoneOrder) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.salineStone = _data["salineStone"] ? SalineStone.fromJS(_data["salineStone"]) : <any>undefined;
+            this.sendDateEn = _data["sendDateEn"] ? DateTime.fromISO(_data["sendDateEn"].toString()) : <any>undefined;
+            this.sendDateFa = _data["sendDateFa"];
+            this.receivedDateEn = _data["receivedDateEn"] ? DateTime.fromISO(_data["receivedDateEn"].toString()) : <any>undefined;
+            this.receivedDateFa = _data["receivedDateFa"];
+            this.totalPrice = _data["totalPrice"];
+            this.deductedPrice = _data["deductedPrice"];
+            if (Array.isArray(_data["salineStoneOrderItems"])) {
+                this.salineStoneOrderItems = [] as any;
+                for (let item of _data["salineStoneOrderItems"])
+                    this.salineStoneOrderItems!.push(SalineStoneOrderItem.fromJS(item));
+            }
+            this.creatorUserId = _data["creatorUserId"];
+            this.creationTime = _data["creationTime"] ? DateTime.fromISO(_data["creationTime"].toString()) : <any>undefined;
+            this.lastModifierUserId = _data["lastModifierUserId"];
+            this.lastModificationTime = _data["lastModificationTime"] ? DateTime.fromISO(_data["lastModificationTime"].toString()) : <any>undefined;
+            this.deleterUserId = _data["deleterUserId"];
+            this.deletionTime = _data["deletionTime"] ? DateTime.fromISO(_data["deletionTime"].toString()) : <any>undefined;
+            this.isDeleted = _data["isDeleted"];
+            this.isActive = _data["isActive"];
+            this.id = _data["id"];
+        }
+    }
+
+    static fromJS(data: any): SalineStoneOrder {
+        data = typeof data === 'object' ? data : {};
+        let result = new SalineStoneOrder();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["salineStone"] = this.salineStone ? this.salineStone.toJSON() : <any>undefined;
+        data["sendDateEn"] = this.sendDateEn ? this.sendDateEn.toString() : <any>undefined;
+        data["sendDateFa"] = this.sendDateFa;
+        data["receivedDateEn"] = this.receivedDateEn ? this.receivedDateEn.toString() : <any>undefined;
+        data["receivedDateFa"] = this.receivedDateFa;
+        data["totalPrice"] = this.totalPrice;
+        data["deductedPrice"] = this.deductedPrice;
+        if (Array.isArray(this.salineStoneOrderItems)) {
+            data["salineStoneOrderItems"] = [];
+            for (let item of this.salineStoneOrderItems)
+                data["salineStoneOrderItems"].push(item.toJSON());
+        }
+        data["creatorUserId"] = this.creatorUserId;
+        data["creationTime"] = this.creationTime ? this.creationTime.toString() : <any>undefined;
+        data["lastModifierUserId"] = this.lastModifierUserId;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toString() : <any>undefined;
+        data["deleterUserId"] = this.deleterUserId;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime.toString() : <any>undefined;
+        data["isDeleted"] = this.isDeleted;
+        data["isActive"] = this.isActive;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface ISalineStoneOrder {
+    salineStone: SalineStone;
+    sendDateEn: DateTime;
+    sendDateFa: string | undefined;
+    receivedDateEn: DateTime;
+    receivedDateFa: string | undefined;
+    totalPrice: number;
+    deductedPrice: number;
+    salineStoneOrderItems: SalineStoneOrderItem[] | undefined;
+    creatorUserId: number | undefined;
+    creationTime: DateTime;
+    lastModifierUserId: number | undefined;
+    lastModificationTime: DateTime | undefined;
+    deleterUserId: number | undefined;
+    deletionTime: DateTime | undefined;
+    isDeleted: boolean;
+    isActive: boolean;
+    id: number;
+}
+
+export class SalineStoneDto implements ISalineStoneDto {
+    name!: number;
+    phone!: string | undefined;
+    address!: string | undefined;
+    salineStoneOrders!: SalineStoneOrder[] | undefined;
+
+    constructor(data?: ISalineStoneDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.phone = _data["phone"];
+            this.address = _data["address"];
+            if (Array.isArray(_data["salineStoneOrders"])) {
+                this.salineStoneOrders = [] as any;
+                for (let item of _data["salineStoneOrders"])
+                    this.salineStoneOrders!.push(SalineStoneOrder.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): SalineStoneDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new SalineStoneDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["phone"] = this.phone;
+        data["address"] = this.address;
+        if (Array.isArray(this.salineStoneOrders)) {
+            data["salineStoneOrders"] = [];
+            for (let item of this.salineStoneOrders)
+                data["salineStoneOrders"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface ISalineStoneDto {
+    name: number;
+    phone: string | undefined;
+    address: string | undefined;
+    salineStoneOrders: SalineStoneOrder[] | undefined;
+}
+
+export class ExpressionOfFuncOfSalineStoneBoolean implements IExpressionOfFuncOfSalineStoneBoolean {
+    readonly type!: string | undefined;
+    nodeType!: ExpressionType;
+    readonly parameters!: ParameterExpression[] | undefined;
+    readonly name!: string | undefined;
+    body!: Expression;
+    readonly returnType!: string | undefined;
+    readonly tailCall!: boolean;
+    readonly canReduce!: boolean;
+
+    constructor(data?: IExpressionOfFuncOfSalineStoneBoolean) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            (<any>this).type = _data["type"];
+            this.nodeType = _data["nodeType"];
+            if (Array.isArray(_data["parameters"])) {
+                (<any>this).parameters = [] as any;
+                for (let item of _data["parameters"])
+                    (<any>this).parameters!.push(ParameterExpression.fromJS(item));
+            }
+            (<any>this).name = _data["name"];
+            this.body = _data["body"] ? Expression.fromJS(_data["body"]) : <any>undefined;
+            (<any>this).returnType = _data["returnType"];
+            (<any>this).tailCall = _data["tailCall"];
+            (<any>this).canReduce = _data["canReduce"];
+        }
+    }
+
+    static fromJS(data: any): ExpressionOfFuncOfSalineStoneBoolean {
+        data = typeof data === 'object' ? data : {};
+        let result = new ExpressionOfFuncOfSalineStoneBoolean();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["type"] = this.type;
+        data["nodeType"] = this.nodeType;
+        if (Array.isArray(this.parameters)) {
+            data["parameters"] = [];
+            for (let item of this.parameters)
+                data["parameters"].push(item.toJSON());
+        }
+        data["name"] = this.name;
+        data["body"] = this.body ? this.body.toJSON() : <any>undefined;
+        data["returnType"] = this.returnType;
+        data["tailCall"] = this.tailCall;
+        data["canReduce"] = this.canReduce;
+        return data; 
+    }
+}
+
+export interface IExpressionOfFuncOfSalineStoneBoolean {
+    type: string | undefined;
+    nodeType: ExpressionType;
+    parameters: ParameterExpression[] | undefined;
+    name: string | undefined;
+    body: Expression;
+    returnType: string | undefined;
+    tailCall: boolean;
+    canReduce: boolean;
+}
+
+export class SalineStoneOrderDto implements ISalineStoneOrderDto {
+    salineStone!: SalineStone;
+    sendDateEn!: DateTime;
+    sendDateFa!: string | undefined;
+    receivedDateEn!: DateTime;
+    receivedDateFa!: string | undefined;
+    totalPrice!: number;
+    deductedPrice!: number;
+    salineStoneOrderItems!: SalineStoneOrderItem[] | undefined;
+
+    constructor(data?: ISalineStoneOrderDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.salineStone = _data["salineStone"] ? SalineStone.fromJS(_data["salineStone"]) : <any>undefined;
+            this.sendDateEn = _data["sendDateEn"] ? DateTime.fromISO(_data["sendDateEn"].toString()) : <any>undefined;
+            this.sendDateFa = _data["sendDateFa"];
+            this.receivedDateEn = _data["receivedDateEn"] ? DateTime.fromISO(_data["receivedDateEn"].toString()) : <any>undefined;
+            this.receivedDateFa = _data["receivedDateFa"];
+            this.totalPrice = _data["totalPrice"];
+            this.deductedPrice = _data["deductedPrice"];
+            if (Array.isArray(_data["salineStoneOrderItems"])) {
+                this.salineStoneOrderItems = [] as any;
+                for (let item of _data["salineStoneOrderItems"])
+                    this.salineStoneOrderItems!.push(SalineStoneOrderItem.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): SalineStoneOrderDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new SalineStoneOrderDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["salineStone"] = this.salineStone ? this.salineStone.toJSON() : <any>undefined;
+        data["sendDateEn"] = this.sendDateEn ? this.sendDateEn.toString() : <any>undefined;
+        data["sendDateFa"] = this.sendDateFa;
+        data["receivedDateEn"] = this.receivedDateEn ? this.receivedDateEn.toString() : <any>undefined;
+        data["receivedDateFa"] = this.receivedDateFa;
+        data["totalPrice"] = this.totalPrice;
+        data["deductedPrice"] = this.deductedPrice;
+        if (Array.isArray(this.salineStoneOrderItems)) {
+            data["salineStoneOrderItems"] = [];
+            for (let item of this.salineStoneOrderItems)
+                data["salineStoneOrderItems"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface ISalineStoneOrderDto {
+    salineStone: SalineStone;
+    sendDateEn: DateTime;
+    sendDateFa: string | undefined;
+    receivedDateEn: DateTime;
+    receivedDateFa: string | undefined;
+    totalPrice: number;
+    deductedPrice: number;
+    salineStoneOrderItems: SalineStoneOrderItem[] | undefined;
+}
+
+export class ExpressionOfFuncOfSalineStoneOrderBoolean implements IExpressionOfFuncOfSalineStoneOrderBoolean {
+    readonly type!: string | undefined;
+    nodeType!: ExpressionType;
+    readonly parameters!: ParameterExpression[] | undefined;
+    readonly name!: string | undefined;
+    body!: Expression;
+    readonly returnType!: string | undefined;
+    readonly tailCall!: boolean;
+    readonly canReduce!: boolean;
+
+    constructor(data?: IExpressionOfFuncOfSalineStoneOrderBoolean) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            (<any>this).type = _data["type"];
+            this.nodeType = _data["nodeType"];
+            if (Array.isArray(_data["parameters"])) {
+                (<any>this).parameters = [] as any;
+                for (let item of _data["parameters"])
+                    (<any>this).parameters!.push(ParameterExpression.fromJS(item));
+            }
+            (<any>this).name = _data["name"];
+            this.body = _data["body"] ? Expression.fromJS(_data["body"]) : <any>undefined;
+            (<any>this).returnType = _data["returnType"];
+            (<any>this).tailCall = _data["tailCall"];
+            (<any>this).canReduce = _data["canReduce"];
+        }
+    }
+
+    static fromJS(data: any): ExpressionOfFuncOfSalineStoneOrderBoolean {
+        data = typeof data === 'object' ? data : {};
+        let result = new ExpressionOfFuncOfSalineStoneOrderBoolean();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["type"] = this.type;
+        data["nodeType"] = this.nodeType;
+        if (Array.isArray(this.parameters)) {
+            data["parameters"] = [];
+            for (let item of this.parameters)
+                data["parameters"].push(item.toJSON());
+        }
+        data["name"] = this.name;
+        data["body"] = this.body ? this.body.toJSON() : <any>undefined;
+        data["returnType"] = this.returnType;
+        data["tailCall"] = this.tailCall;
+        data["canReduce"] = this.canReduce;
+        return data; 
+    }
+}
+
+export interface IExpressionOfFuncOfSalineStoneOrderBoolean {
+    type: string | undefined;
+    nodeType: ExpressionType;
+    parameters: ParameterExpression[] | undefined;
+    name: string | undefined;
+    body: Expression;
+    returnType: string | undefined;
+    tailCall: boolean;
+    canReduce: boolean;
+}
+
+export class SalineStoneOrderItemDto implements ISalineStoneOrderItemDto {
+    salineStoneOrder!: SalineStoneOrder;
+    sewnPiece!: SewnPiece;
+    numberSent!: number;
+    numberReceived!: number;
+    numberStoke!: number;
+
+    constructor(data?: ISalineStoneOrderItemDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.salineStoneOrder = _data["salineStoneOrder"] ? SalineStoneOrder.fromJS(_data["salineStoneOrder"]) : <any>undefined;
+            this.sewnPiece = _data["sewnPiece"] ? SewnPiece.fromJS(_data["sewnPiece"]) : <any>undefined;
+            this.numberSent = _data["numberSent"];
+            this.numberReceived = _data["numberReceived"];
+            this.numberStoke = _data["numberStoke"];
+        }
+    }
+
+    static fromJS(data: any): SalineStoneOrderItemDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new SalineStoneOrderItemDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["salineStoneOrder"] = this.salineStoneOrder ? this.salineStoneOrder.toJSON() : <any>undefined;
+        data["sewnPiece"] = this.sewnPiece ? this.sewnPiece.toJSON() : <any>undefined;
+        data["numberSent"] = this.numberSent;
+        data["numberReceived"] = this.numberReceived;
+        data["numberStoke"] = this.numberStoke;
+        return data; 
+    }
+}
+
+export interface ISalineStoneOrderItemDto {
+    salineStoneOrder: SalineStoneOrder;
+    sewnPiece: SewnPiece;
+    numberSent: number;
+    numberReceived: number;
+    numberStoke: number;
+}
+
+export class ExpressionOfFuncOfSalineStoneOrderItemBoolean implements IExpressionOfFuncOfSalineStoneOrderItemBoolean {
+    readonly type!: string | undefined;
+    nodeType!: ExpressionType;
+    readonly parameters!: ParameterExpression[] | undefined;
+    readonly name!: string | undefined;
+    body!: Expression;
+    readonly returnType!: string | undefined;
+    readonly tailCall!: boolean;
+    readonly canReduce!: boolean;
+
+    constructor(data?: IExpressionOfFuncOfSalineStoneOrderItemBoolean) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            (<any>this).type = _data["type"];
+            this.nodeType = _data["nodeType"];
+            if (Array.isArray(_data["parameters"])) {
+                (<any>this).parameters = [] as any;
+                for (let item of _data["parameters"])
+                    (<any>this).parameters!.push(ParameterExpression.fromJS(item));
+            }
+            (<any>this).name = _data["name"];
+            this.body = _data["body"] ? Expression.fromJS(_data["body"]) : <any>undefined;
+            (<any>this).returnType = _data["returnType"];
+            (<any>this).tailCall = _data["tailCall"];
+            (<any>this).canReduce = _data["canReduce"];
+        }
+    }
+
+    static fromJS(data: any): ExpressionOfFuncOfSalineStoneOrderItemBoolean {
+        data = typeof data === 'object' ? data : {};
+        let result = new ExpressionOfFuncOfSalineStoneOrderItemBoolean();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["type"] = this.type;
+        data["nodeType"] = this.nodeType;
+        if (Array.isArray(this.parameters)) {
+            data["parameters"] = [];
+            for (let item of this.parameters)
+                data["parameters"].push(item.toJSON());
+        }
+        data["name"] = this.name;
+        data["body"] = this.body ? this.body.toJSON() : <any>undefined;
+        data["returnType"] = this.returnType;
+        data["tailCall"] = this.tailCall;
+        data["canReduce"] = this.canReduce;
+        return data; 
+    }
+}
+
+export interface IExpressionOfFuncOfSalineStoneOrderItemBoolean {
+    type: string | undefined;
+    nodeType: ExpressionType;
+    parameters: ParameterExpression[] | undefined;
+    name: string | undefined;
+    body: Expression;
+    returnType: string | undefined;
+    tailCall: boolean;
+    canReduce: boolean;
+}
+
+export class SeamstressDto implements ISeamstressDto {
+    firstName!: string | undefined;
+    lastName!: string | undefined;
+    nationalCode!: string | undefined;
+    phone!: string | undefined;
+    address!: string | undefined;
+    sewnPieces!: SewnPiece[] | undefined;
+
+    constructor(data?: ISeamstressDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.firstName = _data["firstName"];
+            this.lastName = _data["lastName"];
+            this.nationalCode = _data["nationalCode"];
+            this.phone = _data["phone"];
+            this.address = _data["address"];
+            if (Array.isArray(_data["sewnPieces"])) {
+                this.sewnPieces = [] as any;
+                for (let item of _data["sewnPieces"])
+                    this.sewnPieces!.push(SewnPiece.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): SeamstressDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new SeamstressDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["firstName"] = this.firstName;
+        data["lastName"] = this.lastName;
+        data["nationalCode"] = this.nationalCode;
+        data["phone"] = this.phone;
+        data["address"] = this.address;
+        if (Array.isArray(this.sewnPieces)) {
+            data["sewnPieces"] = [];
+            for (let item of this.sewnPieces)
+                data["sewnPieces"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface ISeamstressDto {
+    firstName: string | undefined;
+    lastName: string | undefined;
+    nationalCode: string | undefined;
+    phone: string | undefined;
+    address: string | undefined;
+    sewnPieces: SewnPiece[] | undefined;
+}
+
+export class ExpressionOfFuncOfSeamstressBoolean implements IExpressionOfFuncOfSeamstressBoolean {
+    readonly type!: string | undefined;
+    nodeType!: ExpressionType;
+    readonly parameters!: ParameterExpression[] | undefined;
+    readonly name!: string | undefined;
+    body!: Expression;
+    readonly returnType!: string | undefined;
+    readonly tailCall!: boolean;
+    readonly canReduce!: boolean;
+
+    constructor(data?: IExpressionOfFuncOfSeamstressBoolean) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            (<any>this).type = _data["type"];
+            this.nodeType = _data["nodeType"];
+            if (Array.isArray(_data["parameters"])) {
+                (<any>this).parameters = [] as any;
+                for (let item of _data["parameters"])
+                    (<any>this).parameters!.push(ParameterExpression.fromJS(item));
+            }
+            (<any>this).name = _data["name"];
+            this.body = _data["body"] ? Expression.fromJS(_data["body"]) : <any>undefined;
+            (<any>this).returnType = _data["returnType"];
+            (<any>this).tailCall = _data["tailCall"];
+            (<any>this).canReduce = _data["canReduce"];
+        }
+    }
+
+    static fromJS(data: any): ExpressionOfFuncOfSeamstressBoolean {
+        data = typeof data === 'object' ? data : {};
+        let result = new ExpressionOfFuncOfSeamstressBoolean();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["type"] = this.type;
+        data["nodeType"] = this.nodeType;
+        if (Array.isArray(this.parameters)) {
+            data["parameters"] = [];
+            for (let item of this.parameters)
+                data["parameters"].push(item.toJSON());
+        }
+        data["name"] = this.name;
+        data["body"] = this.body ? this.body.toJSON() : <any>undefined;
+        data["returnType"] = this.returnType;
+        data["tailCall"] = this.tailCall;
+        data["canReduce"] = this.canReduce;
+        return data; 
+    }
+}
+
+export interface IExpressionOfFuncOfSeamstressBoolean {
+    type: string | undefined;
+    nodeType: ExpressionType;
+    parameters: ParameterExpression[] | undefined;
+    name: string | undefined;
+    body: Expression;
+    returnType: string | undefined;
+    tailCall: boolean;
+    canReduce: boolean;
+}
+
 export class UserLoginInfoDto implements IUserLoginInfoDto {
     name!: string | undefined;
     surname!: string | undefined;
@@ -24150,6 +28656,134 @@ export interface IUpdateUserSignInTokenOutput {
     signInToken: string | undefined;
     encodedUserId: string | undefined;
     encodedTenantId: string | undefined;
+}
+
+export class SewnPieceDto implements ISewnPieceDto {
+    doneDateEn!: DateTime;
+    doneDateFa!: string | undefined;
+    seamstress!: Seamstress;
+    fabricRoll!: FabricRoll;
+    fabricCut!: FabricCut;
+    count!: number;
+
+    constructor(data?: ISewnPieceDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.doneDateEn = _data["doneDateEn"] ? DateTime.fromISO(_data["doneDateEn"].toString()) : <any>undefined;
+            this.doneDateFa = _data["doneDateFa"];
+            this.seamstress = _data["seamstress"] ? Seamstress.fromJS(_data["seamstress"]) : <any>undefined;
+            this.fabricRoll = _data["fabricRoll"] ? FabricRoll.fromJS(_data["fabricRoll"]) : <any>undefined;
+            this.fabricCut = _data["fabricCut"] ? FabricCut.fromJS(_data["fabricCut"]) : <any>undefined;
+            this.count = _data["count"];
+        }
+    }
+
+    static fromJS(data: any): SewnPieceDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new SewnPieceDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["doneDateEn"] = this.doneDateEn ? this.doneDateEn.toString() : <any>undefined;
+        data["doneDateFa"] = this.doneDateFa;
+        data["seamstress"] = this.seamstress ? this.seamstress.toJSON() : <any>undefined;
+        data["fabricRoll"] = this.fabricRoll ? this.fabricRoll.toJSON() : <any>undefined;
+        data["fabricCut"] = this.fabricCut ? this.fabricCut.toJSON() : <any>undefined;
+        data["count"] = this.count;
+        return data; 
+    }
+}
+
+export interface ISewnPieceDto {
+    doneDateEn: DateTime;
+    doneDateFa: string | undefined;
+    seamstress: Seamstress;
+    fabricRoll: FabricRoll;
+    fabricCut: FabricCut;
+    count: number;
+}
+
+export class ExpressionOfFuncOfSewnPieceBoolean implements IExpressionOfFuncOfSewnPieceBoolean {
+    readonly type!: string | undefined;
+    nodeType!: ExpressionType;
+    readonly parameters!: ParameterExpression[] | undefined;
+    readonly name!: string | undefined;
+    body!: Expression;
+    readonly returnType!: string | undefined;
+    readonly tailCall!: boolean;
+    readonly canReduce!: boolean;
+
+    constructor(data?: IExpressionOfFuncOfSewnPieceBoolean) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            (<any>this).type = _data["type"];
+            this.nodeType = _data["nodeType"];
+            if (Array.isArray(_data["parameters"])) {
+                (<any>this).parameters = [] as any;
+                for (let item of _data["parameters"])
+                    (<any>this).parameters!.push(ParameterExpression.fromJS(item));
+            }
+            (<any>this).name = _data["name"];
+            this.body = _data["body"] ? Expression.fromJS(_data["body"]) : <any>undefined;
+            (<any>this).returnType = _data["returnType"];
+            (<any>this).tailCall = _data["tailCall"];
+            (<any>this).canReduce = _data["canReduce"];
+        }
+    }
+
+    static fromJS(data: any): ExpressionOfFuncOfSewnPieceBoolean {
+        data = typeof data === 'object' ? data : {};
+        let result = new ExpressionOfFuncOfSewnPieceBoolean();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["type"] = this.type;
+        data["nodeType"] = this.nodeType;
+        if (Array.isArray(this.parameters)) {
+            data["parameters"] = [];
+            for (let item of this.parameters)
+                data["parameters"].push(item.toJSON());
+        }
+        data["name"] = this.name;
+        data["body"] = this.body ? this.body.toJSON() : <any>undefined;
+        data["returnType"] = this.returnType;
+        data["tailCall"] = this.tailCall;
+        data["canReduce"] = this.canReduce;
+        return data; 
+    }
+}
+
+export interface IExpressionOfFuncOfSewnPieceBoolean {
+    type: string | undefined;
+    nodeType: ExpressionType;
+    parameters: ParameterExpression[] | undefined;
+    name: string | undefined;
+    body: Expression;
+    returnType: string | undefined;
+    tailCall: boolean;
+    canReduce: boolean;
 }
 
 export class StripeConfigurationDto implements IStripeConfigurationDto {

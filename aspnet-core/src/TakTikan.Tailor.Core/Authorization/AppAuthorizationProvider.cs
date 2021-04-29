@@ -115,6 +115,58 @@ namespace TakTikan.Tailor.Authorization
             administration.CreateChildPermission(AppPermissions.Pages_Administration_Host_Maintenance, L("Maintenance"), multiTenancySides: _isMultiTenancyEnabled ? MultiTenancySides.Host : MultiTenancySides.Tenant);
             administration.CreateChildPermission(AppPermissions.Pages_Administration_HangfireDashboard, L("HangfireDashboard"), multiTenancySides: _isMultiTenancyEnabled ? MultiTenancySides.Host : MultiTenancySides.Tenant);
             administration.CreateChildPermission(AppPermissions.Pages_Administration_Host_Dashboard, L("Dashboard"), multiTenancySides: MultiTenancySides.Host);
+
+            var taktikan = pages.CreateChildPermission(AppPermissions.Pages_TakTikan, L("TakTikan"));
+
+            var FabricCut = taktikan.CreateChildPermission(AppPermissions.Pages_TakTikan_FabricCut, L("FabricCut"));
+            FabricCut.CreateChildPermission(AppPermissions.Pages_TakTikan_FabricCut_Create, L("CreatingNewFabricCut"));
+            FabricCut.CreateChildPermission(AppPermissions.Pages_TakTikan_FabricCut_Edit, L("EditingFabricCut"));
+            FabricCut.CreateChildPermission(AppPermissions.Pages_TakTikan_FabricCut_Delete, L("DeletingFabricCut"));
+
+            var FabricMaterial = taktikan.CreateChildPermission(AppPermissions.Pages_TakTikan_FabricMaterial, L("FabricMaterial"));
+            FabricMaterial.CreateChildPermission(AppPermissions.Pages_TakTikan_FabricMaterial_Create, L("CreatingNewFabricMaterial"));
+            FabricMaterial.CreateChildPermission(AppPermissions.Pages_TakTikan_FabricMaterial_Edit, L("EditingFabricMaterial"));
+            FabricMaterial.CreateChildPermission(AppPermissions.Pages_TakTikan_FabricMaterial_Delete, L("DeletingFabricMaterial"));
+
+            var FabricRoll = taktikan.CreateChildPermission(AppPermissions.Pages_TakTikan_FabricRoll, L("FabricRoll"));
+            FabricRoll.CreateChildPermission(AppPermissions.Pages_TakTikan_FabricRoll_Create, L("CreatingNewFabricRoll"));
+            FabricRoll.CreateChildPermission(AppPermissions.Pages_TakTikan_FabricRoll_Edit, L("EditingFabricRoll"));
+            FabricRoll.CreateChildPermission(AppPermissions.Pages_TakTikan_FabricRoll_Delete, L("DeletingFabricRoll"));
+
+            var FabricType = taktikan.CreateChildPermission(AppPermissions.Pages_TakTikan_FabricType, L("FabricType"));
+            FabricType.CreateChildPermission(AppPermissions.Pages_TakTikan_FabricType_Create, L("CreatingNewFabricType"));
+            FabricType.CreateChildPermission(AppPermissions.Pages_TakTikan_FabricType_Edit, L("EditingFabricType"));
+            FabricType.CreateChildPermission(AppPermissions.Pages_TakTikan_FabricType_Delete, L("DeletingFabricType"));
+
+            var Gender = taktikan.CreateChildPermission(AppPermissions.Pages_TakTikan_Gender, L("Gender"));
+            Gender.CreateChildPermission(AppPermissions.Pages_TakTikan_Gender_Create, L("CreatingNewGender"));
+            Gender.CreateChildPermission(AppPermissions.Pages_TakTikan_Gender_Edit, L("EditingGender"));
+            Gender.CreateChildPermission(AppPermissions.Pages_TakTikan_Gender_Delete, L("DeletingGender"));
+
+            var SalineStone = taktikan.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStone, L("SalineStone"));
+            SalineStone.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStone_Create, L("CreatingNewSalineStone"));
+            SalineStone.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStone_Edit, L("EditingSalineStone"));
+            SalineStone.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStone_Delete, L("DeletingSalineStone"));
+
+            var SalineStoneOrder = taktikan.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStoneOrder, L("SalineStoneOrder"));
+            SalineStoneOrder.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStoneOrder_Create, L("CreatingNewSalineStoneOrder"));
+            SalineStoneOrder.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStoneOrder_Edit, L("EditingSalineStoneOrder"));
+            SalineStoneOrder.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStoneOrder_Delete, L("DeletingSalineStoneOrder"));
+
+            var SalineStoneOrderItem = taktikan.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStoneOrderItem, L("SalineStoneOrderItem"));
+            SalineStoneOrderItem.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStoneOrderItem_Create, L("CreatingNewSalineStoneOrderItem"));
+            SalineStoneOrderItem.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStoneOrderItem_Edit, L("EditingSalineStoneOrderItem"));
+            SalineStoneOrderItem.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStoneOrderItem_Delete, L("DeletingSalineStoneOrderItem"));
+
+            var Seamstress = taktikan.CreateChildPermission(AppPermissions.Pages_TakTikan_Seamstress, L("Seamstress"));
+            Seamstress.CreateChildPermission(AppPermissions.Pages_TakTikan_Seamstress_Create, L("CreatingNewSeamstress"));
+            Seamstress.CreateChildPermission(AppPermissions.Pages_TakTikan_Seamstress_Edit, L("EditingSeamstress"));
+            Seamstress.CreateChildPermission(AppPermissions.Pages_TakTikan_Seamstress_Delete, L("DeletingSeamstress"));
+
+            var SewnPiece = taktikan.CreateChildPermission(AppPermissions.Pages_TakTikan_SewnPiece, L("SewnPiece"));
+            SewnPiece.CreateChildPermission(AppPermissions.Pages_TakTikan_SewnPiece_Create, L("CreatingNewSewnPiece"));
+            SewnPiece.CreateChildPermission(AppPermissions.Pages_TakTikan_SewnPiece_Edit, L("EditingSewnPiece"));
+            SewnPiece.CreateChildPermission(AppPermissions.Pages_TakTikan_SewnPiece_Delete, L("DeletingSewnPiece"));
         }
 
         private static ILocalizableString L(string name)

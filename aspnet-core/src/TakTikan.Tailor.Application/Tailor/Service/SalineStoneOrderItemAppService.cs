@@ -1,13 +1,16 @@
-﻿using Abp.Domain.Repositories;
+﻿using Abp.Authorization;
+using Abp.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using TakTikan.Tailor.Authorization;
 using TakTikan.Tailor.Dto;
 using TakTikan.Tailor.Interface;
 
 namespace TakTikan.Tailor.Tailor.Service
 {
+    [AbpAuthorize(AppPermissions.Pages_TakTikan_SalineStoneOrderItem)]
     public class SalineStoneOrderItemAppService : TailorAppServiceBase, ISalineStoneOrderItemAppService
     {
         private readonly IRepository<SalineStoneOrderItem> _repository;

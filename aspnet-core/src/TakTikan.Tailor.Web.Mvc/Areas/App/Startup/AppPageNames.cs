@@ -32,11 +32,5 @@
             public const string Settings = "Administration.Settings.Tenant";
             public const string SubscriptionManagement = "Administration.SubscriptionManagement.Tenant";
         }
-
-        public static class TakTikan
-        {
-            public const string Main = "Administration.Taktikan";
-            public const string BaseData = "Administration.BaseData";
-        }
     }
 }

@@ -1,13 +1,16 @@
-﻿using Abp.Domain.Repositories;
+﻿using Abp.Authorization;
+using Abp.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using TakTikan.Tailor.Authorization;
 using TakTikan.Tailor.Dto;
 using TakTikan.Tailor.Interface;
 
 namespace TakTikan.Tailor.Service
 {
+    [AbpAuthorize(AppPermissions.Pages_TakTikan_FabricMaterial)]
     public class FabricMaterialAppService : TailorAppServiceBase, IFabricMaterialAppService
     {
         private readonly IRepository<FabricMaterial> _repository;
