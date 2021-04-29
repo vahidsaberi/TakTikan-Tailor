@@ -153,7 +153,7 @@ namespace TakTikan.Tailor.Authorization
             SalineStoneOrder.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStoneOrder_Edit, L("EditingSalineStoneOrder"));
             SalineStoneOrder.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStoneOrder_Delete, L("DeletingSalineStoneOrder"));
 
-            var SalineStoneOrderItem = taktikan.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStoneOrderItem, L("SalineStoneOrderItem"));
+            var SalineStoneOrderItem = SalineStoneOrder.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStoneOrderItem, L("SalineStoneOrderItem"));
             SalineStoneOrderItem.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStoneOrderItem_Create, L("CreatingNewSalineStoneOrderItem"));
             SalineStoneOrderItem.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStoneOrderItem_Edit, L("EditingSalineStoneOrderItem"));
             SalineStoneOrderItem.CreateChildPermission(AppPermissions.Pages_TakTikan_SalineStoneOrderItem_Delete, L("DeletingSalineStoneOrderItem"));
