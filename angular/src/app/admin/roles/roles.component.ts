@@ -1,4 +1,4 @@
-import {Component, Injector, ViewChild, OnInit} from '@angular/core';
+﻿import {Component, Injector, ViewChild, OnInit} from '@angular/core';
 import {appModuleAnimation} from '@shared/animations/routerTransition';
 import {AppComponentBase} from '@shared/common/app-component-base';
 import {
@@ -26,7 +26,7 @@ export class RolesComponent extends AppComponentBase implements OnInit {
     @ViewChild('dataTable', {static: true}) dataTable: Table;
     @ViewChild('permissionFilterTreeModal', {static: true}) permissionFilterTreeModal: PermissionTreeModalComponent;
 
-    _entityTypeFullName = 'MyCompanyName.AbpZeroTemplate.Authorization.Roles.Role';
+    _entityTypeFullName = 'TakTikan.Tailor.Authorization.Roles.Role';
     entityHistoryEnabled = false;
 
     constructor(

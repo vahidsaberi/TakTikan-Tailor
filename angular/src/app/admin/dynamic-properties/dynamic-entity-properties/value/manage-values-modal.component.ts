@@ -1,4 +1,4 @@
-import { Component, Injector, ViewChild } from '@angular/core';
+﻿import { Component, Injector, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import {ManagerComponent} from '@app/admin/dynamic-properties/dynamic-entity-properties/value/manager.component';

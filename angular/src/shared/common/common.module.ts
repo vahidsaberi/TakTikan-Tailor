@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+﻿import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { AppUrlService } from './nav/app-url.service';
 import { AppUiCustomizationService } from './ui/app-ui-customization.service';
@@ -10,7 +10,7 @@ import { CookieConsentService } from './session/cookie-consent.service';
         CommonModule
     ]
 })
-export class AbpZeroTemplateCommonModule {
+export class TailorCommonModule {
     static forRoot(): ModuleWithProviders<CommonModule> {
         return {
             ngModule: CommonModule,

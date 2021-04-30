@@ -1,4 +1,4 @@
-import { Directive, Input, ComponentFactoryResolver, ViewContainerRef, Injector, SimpleChanges, OnChanges } from '@angular/core';
+﻿import { Directive, Input, ComponentFactoryResolver, ViewContainerRef, Injector, SimpleChanges, OnChanges } from '@angular/core';
 import { NgxSpinnerService, NgxSpinnerComponent } from 'ngx-spinner';
 
 @Directive({

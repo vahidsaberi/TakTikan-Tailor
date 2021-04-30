@@ -1,4 +1,4 @@
-import { Component, Injector, Output, ViewChild, OnDestroy } from '@angular/core';
+﻿import { Component, Injector, Output, ViewChild, OnDestroy } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { timer, Subscription } from 'rxjs';

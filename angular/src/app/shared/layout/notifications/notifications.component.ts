@@ -1,4 +1,4 @@
-import { Component, Injector, ViewChild, ViewEncapsulation } from '@angular/core';
+﻿import { Component, Injector, ViewChild, ViewEncapsulation } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { NotificationServiceProxy, UserNotification, UserNotificationState } from '@shared/service-proxies/service-proxies';

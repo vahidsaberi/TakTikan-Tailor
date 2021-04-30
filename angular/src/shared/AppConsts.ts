@@ -1,4 +1,4 @@
-export class AppConsts {
+﻿export class AppConsts {
 
     static readonly tenancyNamePlaceHolderInUrl = '{TENANCY_NAME}';
 
@@ -17,7 +17,7 @@ export class AppConsts {
     };
 
     static readonly localization = {
-        defaultLocalizationSourceName: 'AbpZeroTemplate'
+        defaultLocalizationSourceName: 'Tailor'
     };
 
     static readonly authorization = {

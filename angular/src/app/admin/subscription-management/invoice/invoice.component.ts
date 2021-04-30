@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+﻿import { Component, Injector, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AppConsts } from '@shared/AppConsts';
 import { appModuleAnimation } from '@shared/animations/routerTransition';

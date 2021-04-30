@@ -1,4 +1,4 @@
-import { Component, OnInit, Injector, Input, EventEmitter, Output, InjectionToken } from '@angular/core';
+﻿import { Component, OnInit, Injector, Input, EventEmitter, Output, InjectionToken } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { DynamicEntityPropertyValueServiceProxy, GetAllDynamicEntityPropertyValuesOutputItem, CleanValuesInput, InsertOrUpdateAllValuesInput, InsertOrUpdateAllValuesInputItem } from '@shared/service-proxies/service-proxies';
 import { InputTypeConfigurationDefinition, InputTypeConfigurationService } from '@app/shared/common/input-types/input-type-configuration.service';

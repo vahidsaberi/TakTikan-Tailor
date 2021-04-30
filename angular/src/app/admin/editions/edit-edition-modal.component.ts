@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
+﻿import { Component, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppEditionExpireAction } from '@shared/AppEnums';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ComboboxItemDto, CommonLookupServiceProxy, UpdateEditionDto, EditionServiceProxy } from '@shared/service-proxies/service-proxies';

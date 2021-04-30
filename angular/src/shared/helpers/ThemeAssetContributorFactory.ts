@@ -1,4 +1,4 @@
-import { IThemeAssetContributor } from '@app/shared/layout/themes/ThemeAssetContributor';
+﻿import { IThemeAssetContributor } from '@app/shared/layout/themes/ThemeAssetContributor';
 import { ThemeHelper } from '@app/shared/layout/themes/ThemeHelper';
 import { DefaultThemeAssetContributor } from '@app/shared/layout/themes/default/DefaultThemeAssetContributor';
 import { Theme8ThemeAssetContributor } from '@app/shared/layout/themes/theme8/Theme8ThemeAssetContributor';

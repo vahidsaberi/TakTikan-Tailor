@@ -1,4 +1,4 @@
-export interface IThemeAssetContributor {
+﻿export interface IThemeAssetContributor {
     getAssetUrls(): string[];
     getAdditionalBodyStle(): string;
     getMenuWrapperStyle(): string;

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { SingleLineStringInputTypeComponent } from './single-line-string-input-type/single-line-string-input-type.component';
 import { CheckboxInputTypeComponent } from './checkbox-input-type/checkbox-input-type.component';
 import { ComboboxInputTypeComponent } from './combobox-input-type/combobox-input-type.component';

@@ -1,4 +1,4 @@
-export class DashboardCustomizationConst {
+﻿export class DashboardCustomizationConst {
     static widgets = {
         tenant: {
             profitShare: 'Widgets_Tenant_ProfitShare',

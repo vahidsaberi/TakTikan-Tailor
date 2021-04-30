@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
+﻿import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ThemeSettingsDto, UiCustomizationSettingsServiceProxy } from '@shared/service-proxies/service-proxies';

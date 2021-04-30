@@ -1,4 +1,4 @@
-// Angular
+﻿// Angular
 import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
 
 export interface OffcanvasOptions {

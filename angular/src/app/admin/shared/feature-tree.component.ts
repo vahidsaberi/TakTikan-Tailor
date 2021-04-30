@@ -1,4 +1,4 @@
-import { Component, Injector } from '@angular/core';
+﻿import { Component, Injector } from '@angular/core';
 import { FeatureTreeEditModel } from '@app/admin/shared/feature-tree-edit.model';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { FlatFeatureDto, NameValueDto } from '@shared/service-proxies/service-proxies';

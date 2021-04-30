@@ -1,4 +1,4 @@
-import { IAjaxResponse, TokenService } from 'abp-ng2-module';
+﻿import { IAjaxResponse, TokenService } from 'abp-ng2-module';
 import { Component, Injector, ViewChild } from '@angular/core';
 import { AppConsts } from '@shared/AppConsts';
 import { AppComponentBase } from '@shared/common/app-component-base';

@@ -1,4 +1,4 @@
-<div id="chat_is_connecting_icon" class="topbar-item" *ngIf="(isHost || ('App.ChatFeature' | checkFeature)) && !chatConnected">
+﻿<div id="chat_is_connecting_icon" class="topbar-item" *ngIf="(isHost || ('App.ChatFeature' | checkFeature)) && !chatConnected">
     <button [class]="customStyle">
         <img *ngIf="!chatConnected" src="./assets/common/images/loading.gif" style="width: 23px;" tooltip="{{'ChatIsConnecting' | localize}}" placement="left"/>
     </button>

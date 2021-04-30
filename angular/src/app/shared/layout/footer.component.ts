@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit, Input } from '@angular/core';
+﻿import { Component, Injector, OnInit, Input } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { AppConsts } from '@shared/AppConsts';
 import { ThemeAssetContributorFactory } from '@shared/helpers/ThemeAssetContributorFactory';

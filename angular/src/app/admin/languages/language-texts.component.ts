@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
+﻿import { AfterViewInit, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';
@@ -81,7 +81,7 @@ export class LanguageTextsComponent extends AppComponentBase implements AfterVie
         this._activatedRoute.params.subscribe((params: Params) => {
             this.baseLanguageName = params['baseLanguageName'] || abp.localization.currentLanguage.name;
             this.targetLanguageName = params['name'];
-            this.sourceName = params['sourceName'] || 'AbpZeroTemplate';
+            this.sourceName = params['sourceName'] || 'Tailor';
             this.targetValueFilter = params['targetValueFilter'] || 'ALL';
             this.filterText = params['filterText'] || '';
 

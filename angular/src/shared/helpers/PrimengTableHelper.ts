@@ -1,4 +1,4 @@
-import { LazyLoadEvent } from 'primeng/api';
+﻿import { LazyLoadEvent } from 'primeng/api';
 import { Paginator } from 'primeng/paginator';
 import { Table } from 'primeng/table';
 import * as rtlDetect from 'rtl-detect';

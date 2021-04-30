@@ -1,4 +1,4 @@
-import {Component, Injector, Output, EventEmitter, ViewChild} from '@angular/core';
+﻿import {Component, Injector, Output, EventEmitter, ViewChild} from '@angular/core';
 import {AppComponentBase} from '@shared/common/app-component-base';
 import {
     WebhookSubscriptionServiceProxy,

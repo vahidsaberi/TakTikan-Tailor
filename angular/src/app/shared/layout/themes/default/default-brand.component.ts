@@ -1,4 +1,4 @@
-import { Injector, Component, ViewEncapsulation, Inject } from '@angular/core';
+﻿import { Injector, Component, ViewEncapsulation, Inject } from '@angular/core';
 import { AppConsts } from '@shared/AppConsts';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { DOCUMENT } from '@angular/common';

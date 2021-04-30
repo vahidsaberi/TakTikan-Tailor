@@ -1,4 +1,4 @@
-import { Injector, Pipe, PipeTransform } from '@angular/core';
+﻿import { Injector, Pipe, PipeTransform } from '@angular/core';
 import { FeatureCheckerService } from 'abp-ng2-module';
 
 @Pipe({

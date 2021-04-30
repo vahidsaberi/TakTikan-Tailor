@@ -1,4 +1,4 @@
-export class WidgetViewDefinition {
+﻿export class WidgetViewDefinition {
     id: string;
     component: any;
     defaultWidth: number;

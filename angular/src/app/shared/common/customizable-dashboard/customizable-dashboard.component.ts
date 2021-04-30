@@ -1,4 +1,4 @@
-import { Component, OnInit, Injector, Input, ViewChild, OnDestroy } from '@angular/core';
+﻿import { Component, OnInit, Injector, Input, ViewChild, OnDestroy } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { DashboardViewConfigurationService } from './dashboard-view-configuration.service';
 import { appModuleAnimation } from '@shared/animations/routerTransition';

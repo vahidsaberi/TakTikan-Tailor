@@ -1,4 +1,4 @@
-import { IThemeAssetContributor } from '../ThemeAssetContributor';
+﻿import { IThemeAssetContributor } from '../ThemeAssetContributor';
 import { ThemeHelper } from '@app/shared/layout/themes/ThemeHelper';
 import * as rtlDetect from 'rtl-detect';
 import { AppConsts } from '@shared/AppConsts';

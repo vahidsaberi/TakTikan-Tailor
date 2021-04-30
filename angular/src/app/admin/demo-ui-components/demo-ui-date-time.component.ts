@@ -1,4 +1,4 @@
-import { Component, ElementRef, Injector, ViewChild } from '@angular/core';
+﻿import { Component, ElementRef, Injector, ViewChild } from '@angular/core';
 import { DateTimeService } from '@app/shared/common/timing/date-time.service';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';

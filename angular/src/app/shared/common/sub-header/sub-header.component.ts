@@ -1,4 +1,4 @@
-import { Component, Injector, Input } from '@angular/core';
+﻿import { Component, Injector, Input } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AppComponentBase } from '@shared/common/app-component-base';
 

@@ -1,4 +1,4 @@
-import { AppConsts } from '@shared/AppConsts';
+﻿import { AppConsts } from '@shared/AppConsts';
 import { FormattedStringValueExtracter } from '@shared/helpers/FormattedStringValueExtracter';
 
 export class SubdomainTenancyNameFinder {

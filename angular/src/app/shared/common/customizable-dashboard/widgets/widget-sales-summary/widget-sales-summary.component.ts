@@ -1,4 +1,4 @@
-import { Component, OnInit, Injector, OnDestroy } from '@angular/core';
+﻿import { Component, OnInit, Injector, OnDestroy } from '@angular/core';
 import { forEach as _forEach } from 'lodash-es';
 import { SalesSummaryDatePeriod, TenantDashboardServiceProxy } from '@shared/service-proxies/service-proxies';
 import { DashboardChartBase } from '../dashboard-chart-base';

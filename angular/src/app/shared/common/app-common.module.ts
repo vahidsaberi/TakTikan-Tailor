@@ -1,9 +1,9 @@
-import { CommonModule } from '@angular/common';
+﻿import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppLocalizationService } from '@app/shared/common/localization/app-localization.service';
 import { AppNavigationService } from '@app/shared/layout/nav/app-navigation.service';
-import { AbpZeroTemplateCommonModule } from '@shared/common/common.module';
+import { TailorCommonModule } from '@shared/common/common.module';
 import { UtilsModule } from '@shared/utils/utils.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TabsModule } from 'ngx-bootstrap/tabs';
@@ -58,7 +58,7 @@ import { SubHeaderComponent } from '@app/shared/common/sub-header/sub-header.com
         ReactiveFormsModule,
         ModalModule.forRoot(),
         UtilsModule,
-        AbpZeroTemplateCommonModule,
+        TailorCommonModule,
         TableModule,
         PaginatorModule,
         GridsterModule,

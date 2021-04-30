@@ -1,4 +1,4 @@
-import { Component, Injector, EventEmitter, Output, ViewChild } from '@angular/core';
+﻿import { Component, Injector, EventEmitter, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import {
     DynamicEntityPropertyDto,

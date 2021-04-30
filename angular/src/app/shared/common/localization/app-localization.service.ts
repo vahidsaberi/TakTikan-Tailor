@@ -1,4 +1,4 @@
-import { LocalizationService } from 'abp-ng2-module';
+﻿import { LocalizationService } from 'abp-ng2-module';
 import { Injectable } from '@angular/core';
 import { AppConsts } from '@shared/AppConsts';
 

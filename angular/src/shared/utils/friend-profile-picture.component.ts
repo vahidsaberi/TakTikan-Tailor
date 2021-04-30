@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
+﻿import { AfterViewInit, Component, Input } from '@angular/core';
 import { AppConsts } from '@shared/AppConsts';
 import { ProfileServiceProxy } from '@shared/service-proxies/service-proxies';
 

@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit, Input } from '@angular/core';
+﻿import { Component, Injector, OnInit, Input } from '@angular/core';
 import { ThemesLayoutBaseComponent } from '../themes/themes-layout-base.component';
 import { ChangeUserLanguageDto, ProfileServiceProxy } from '@shared/service-proxies/service-proxies';
 import { filter as _filter } from 'lodash-es';

@@ -1,4 +1,4 @@
-import { AppComponentBase } from '@shared/common/app-component-base';
+﻿import { AppComponentBase } from '@shared/common/app-component-base';
 import { Injector } from '@angular/core';
 import { SelectedValuesOptions, AllValuesOptions, ComponentInstanceOptions } from './InputTypeConsts';
 

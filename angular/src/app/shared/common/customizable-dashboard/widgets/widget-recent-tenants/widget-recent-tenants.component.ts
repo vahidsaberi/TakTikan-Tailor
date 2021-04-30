@@ -1,4 +1,4 @@
-import { Component, ViewChild, Injector } from '@angular/core';
+﻿import { Component, ViewChild, Injector } from '@angular/core';
 import { Table } from 'primeng/table';
 import { HostDashboardServiceProxy, GetRecentTenantsOutput } from '@shared/service-proxies/service-proxies';
 import { WidgetComponentBaseComponent } from '../widget-component-base';

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Injector, ViewChild, ViewEncapsulation } from '@angular/core';
+﻿import { Component, ElementRef, Injector, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';

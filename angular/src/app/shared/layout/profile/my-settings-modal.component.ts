@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Injector, Output, ViewChild, OnInit } from '@angular/core';
+﻿import { Component, EventEmitter, Injector, Output, ViewChild, OnInit } from '@angular/core';
 import { AppConsts } from '@shared/AppConsts';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import {

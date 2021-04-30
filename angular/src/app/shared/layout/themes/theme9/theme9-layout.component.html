@@ -1,4 +1,4 @@
-<div id="kt_header_mobile" class="header-mobile bg-primary  header-mobile-fixed ">
+﻿<div id="kt_header_mobile" class="header-mobile bg-primary  header-mobile-fixed ">
     <a routerLink="/" target="_blank">
         <img *ngIf="!appSession.tenant || !appSession.tenant.logoId" [src]="defaultLogo" alt="logo" height="38" />
         <img *ngIf="appSession.tenant && appSession.tenant.logoId"

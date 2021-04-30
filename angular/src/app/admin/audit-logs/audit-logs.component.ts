@@ -1,4 +1,4 @@
-import { Component, Injector, ViewChild, ViewEncapsulation, AfterViewInit } from '@angular/core';
+﻿import { Component, Injector, ViewChild, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { AuditLogDetailModalComponent } from '@app/admin/audit-logs/audit-log-detail-modal.component';
 import { EntityChangeDetailModalComponent } from '@app/shared/common/entityHistory/entity-change-detail-modal.component';
 import { appModuleAnimation } from '@shared/animations/routerTransition';

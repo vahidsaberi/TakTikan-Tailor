@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Injector } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy, Injector } from '@angular/core';
 import { ChartDateInterval, HostDashboardServiceProxy } from '@shared/service-proxies/service-proxies';
 import { DateTime } from 'luxon';
 import { filter as _filter } from 'lodash-es';

@@ -1,7 +1,7 @@
-import { CommonModule } from '@angular/common';
+﻿import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
-import { AbpZeroTemplateCommonModule } from '@shared/common/common.module';
+import { TailorCommonModule } from '@shared/common/common.module';
 import { FormsModule } from '@angular/forms';
 import { ServiceProxyModule } from '@shared/service-proxies/service-proxy.module';
 import { UtilsModule } from '@shared/utils/utils.module';
@@ -53,7 +53,7 @@ export function getRecaptchaLanguage(): string {
         HttpClientJsonpModule,
         NgxCaptchaModule,
         ModalModule.forRoot(),
-        AbpZeroTemplateCommonModule,
+        TailorCommonModule,
         UtilsModule,
         ServiceProxyModule,
         AccountRoutingModule,

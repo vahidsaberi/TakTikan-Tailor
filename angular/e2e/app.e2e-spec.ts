@@ -1,11 +1,11 @@
-import { AbpZeroTemplatePage } from './app.po';
+﻿import { TailorPage } from './app.po';
 import { browser, element, by } from 'protractor';
 
 describe('abp-zero-template App', () => {
-    let page: AbpZeroTemplatePage;
+    let page: TailorPage;
 
     beforeEach(() => {
-        page = new AbpZeroTemplatePage();
+        page = new TailorPage();
 
         browser.driver.manage().deleteAllCookies();
 
