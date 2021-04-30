@@ -16,7 +16,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\TakTikan.Tailor.GraphQL\TakTikan.Tailor.GraphQL.csproj" />
     <ProjectReference Include="..\TakTikan.Tailor.Test.Base\TakTikan.Tailor.Test.Base.csproj" />
   </ItemGroup>
   
