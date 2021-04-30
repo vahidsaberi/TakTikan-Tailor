@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
+﻿import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { DateTimeService } from '@app/shared/common/timing/date-time.service';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { CommonLookupServiceProxy, SubscribableEditionComboboxItemDto, TenantEditDto, TenantServiceProxy } from '@shared/service-proxies/service-proxies';

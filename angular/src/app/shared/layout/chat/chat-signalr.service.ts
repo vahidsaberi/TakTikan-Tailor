@@ -1,4 +1,4 @@
-import { Injectable, Injector, NgZone } from '@angular/core';
+﻿import { Injectable, Injector, NgZone } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { HubConnection } from '@microsoft/signalr';
 

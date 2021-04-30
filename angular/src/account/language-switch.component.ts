@@ -1,4 +1,4 @@
-import {Component, Injector, OnInit} from '@angular/core';
+﻿import {Component, Injector, OnInit} from '@angular/core';
 import {AppComponentBase} from '@shared/common/app-component-base';
 import { filter as _filter } from 'lodash-es';
 

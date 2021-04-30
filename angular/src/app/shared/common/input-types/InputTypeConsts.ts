@@ -1,4 +1,4 @@
-import { InjectionToken } from '@angular/core';
+﻿import { InjectionToken } from '@angular/core';
 
 export const SelectedValuesOptions = new InjectionToken<string[]>('selectedValues');
 export const AllValuesOptions = new InjectionToken<string[]>('allValues');

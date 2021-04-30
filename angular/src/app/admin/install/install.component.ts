@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit, ViewEncapsulation } from '@angular/core';
+﻿import { Component, Injector, OnInit, ViewEncapsulation } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { EmailSettingsEditDto, HostBillingSettingsEditDto, InstallDto, InstallServiceProxy, NameValue } from '@shared/service-proxies/service-proxies';

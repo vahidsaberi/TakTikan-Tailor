@@ -1,4 +1,4 @@
-import { Component, Injector, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+﻿import { Component, Injector, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { SessionTimeoutModalComponent } from './session-timeout-modal-component';
 import { timer, fromEvent, Subject, Subscription } from 'rxjs';

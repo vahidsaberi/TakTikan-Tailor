@@ -1,11 +1,11 @@
-import { PlatformLocation, registerLocaleData } from '@angular/common';
+﻿import { PlatformLocation, registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, DEFAULT_CURRENCY_CODE, Injector, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppAuthService } from '@app/shared/common/auth/app-auth.service';
 import { AppConsts } from '@shared/AppConsts';
-import { AbpZeroTemplateCommonModule } from '@shared/common/common.module';
+import { TailorCommonModule } from '@shared/common/common.module';
 import { AppSessionService } from '@shared/common/session/app-session.service';
 import { AppUiCustomizationService } from '@shared/common/ui/app-ui-customization.service';
 import { UrlHelper } from '@shared/helpers/UrlHelper';
@@ -76,10 +76,10 @@ export function appInitializerFactory(
 function initializeLocalForage() {
     localForage.config({
         driver: localForage.LOCALSTORAGE,
-        name: 'AbpZeroTemplate',
+        name: 'Tailor',
         version: 1.0,
         storeName: 'abpzerotemplate_local_storage',
-        description: 'Cached data for AbpZeroTemplate'
+        description: 'Cached data for Tailor'
     });
 }
 
@@ -238,7 +238,7 @@ function handleLogoutRequest(authService: AppAuthService) {
         BrowserModule,
         BrowserAnimationsModule,
         AppModule,
-        AbpZeroTemplateCommonModule.forRoot(),
+        TailorCommonModule.forRoot(),
         ServiceProxyModule,
         HttpClientModule,
         RootRoutingModule,

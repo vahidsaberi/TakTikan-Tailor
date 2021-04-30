@@ -1,4 +1,4 @@
-import { Component, OnInit, Injector } from '@angular/core';
+﻿import { Component, OnInit, Injector } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { StripePaymentServiceProxy } from '@shared/service-proxies/service-proxies';
 import { ActivatedRoute, Router } from '@angular/router';

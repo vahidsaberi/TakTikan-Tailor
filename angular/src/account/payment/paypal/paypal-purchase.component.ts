@@ -1,4 +1,4 @@
-import { Component, Input, Injector, OnInit } from '@angular/core';
+﻿import { Component, Input, Injector, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ScriptLoaderService } from '@shared/utils/script-loader.service';

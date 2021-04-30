@@ -1,4 +1,4 @@
-// Angular
+﻿// Angular
 import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
 // Object-Path
 import * as objectPath from 'object-path';

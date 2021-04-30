@@ -1,4 +1,4 @@
-import { Component, Injector, ViewChild } from '@angular/core';
+﻿import { Component, Injector, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { AuditLogServiceProxy, EntityChangeListDto, EntityPropertyChangeDto } from '@shared/service-proxies/service-proxies';
 import { DateTime } from 'luxon';

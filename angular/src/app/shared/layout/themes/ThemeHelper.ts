@@ -1,4 +1,4 @@
-export class ThemeHelper {
+﻿export class ThemeHelper {
 
     public static getTheme(): string {
         return abp.setting.get('App.UiManagement.Theme');

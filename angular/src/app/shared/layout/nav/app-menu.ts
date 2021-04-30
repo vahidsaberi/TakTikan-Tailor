@@ -1,4 +1,4 @@
-import { AppMenuItem } from './app-menu-item';
+﻿import { AppMenuItem } from './app-menu-item';
 
 export class AppMenu {
     name = '';

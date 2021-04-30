@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { UiCustomizationSettingsDto } from '@shared/service-proxies/service-proxies';
 import * as rtlDetect from 'rtl-detect';
 import { ThemeAssetContributorFactory } from '@shared/helpers/ThemeAssetContributorFactory';

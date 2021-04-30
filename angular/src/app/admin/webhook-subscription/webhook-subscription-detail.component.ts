@@ -1,4 +1,4 @@
-import { Component, OnInit, Injector, ViewChild } from '@angular/core';
+﻿import { Component, OnInit, Injector, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { WebhookSubscriptionServiceProxy, WebhookSendAttemptServiceProxy, WebhookSubscription, ActivateWebhookSubscriptionInput } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditWebhookSubscriptionModalComponent } from './create-or-edit-webhook-subscription-modal.component';

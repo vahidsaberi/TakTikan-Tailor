@@ -1,4 +1,4 @@
-import { CompilerOptions, NgModuleRef, Type } from '@angular/core';
+﻿import { CompilerOptions, NgModuleRef, Type } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppAuthService } from '@app/shared/common/auth/app-auth.service';
 import { AppConsts } from '@shared/AppConsts';

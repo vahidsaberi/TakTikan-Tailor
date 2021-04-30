@@ -1,4 +1,4 @@
-import { IThemeAssetContributor } from '../ThemeAssetContributor';
+﻿import { IThemeAssetContributor } from '../ThemeAssetContributor';
 
 export class Theme11ThemeAssetContributor implements IThemeAssetContributor {
     public getAssetUrls(): string[] {

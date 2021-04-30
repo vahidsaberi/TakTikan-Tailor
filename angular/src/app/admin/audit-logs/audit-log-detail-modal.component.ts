@@ -1,4 +1,4 @@
-import { Component, Injector, ViewChild } from '@angular/core';
+﻿import { Component, Injector, ViewChild } from '@angular/core';
 import { DateTimeService } from '@app/shared/common/timing/date-time.service';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { AuditLogListDto } from '@shared/service-proxies/service-proxies';

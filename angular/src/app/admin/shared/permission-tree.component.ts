@@ -1,4 +1,4 @@
-import { Component, Injector, Input } from '@angular/core';
+﻿import { Component, Injector, Input } from '@angular/core';
 import { PermissionTreeEditModel } from '@app/admin/shared/permission-tree-edit.model';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ArrayToTreeConverterService } from '@shared/utils/array-to-tree-converter.service';

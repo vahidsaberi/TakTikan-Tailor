@@ -29,15 +29,11 @@ using TakTikan.Tailor.Web.IdentityServer;
 using TakTikan.Tailor.Web.Swagger;
 using Stripe;
 using ILoggerFactory = Microsoft.Extensions.Logging.ILoggerFactory;
-using GraphQL.Server;
-using GraphQL.Server.Ui.Playground;
 using HealthChecks.UI.Client;
 using IdentityServer4.Configuration;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using TakTikan.Tailor.Configure;
-using TakTikan.Tailor.Schemas;
 using TakTikan.Tailor.Web.HealthCheck;
 using Newtonsoft.Json.Serialization;
 using Owl.reCAPTCHA;
@@ -141,11 +137,7 @@ namespace TakTikan.Tailor.Web.Startup
                 });
             }
 
-            if (WebConsts.GraphQL.Enabled)
-            {
-                services.AddAndConfigureGraphQL();
-            }
-
+            
             if (bool.Parse(_appConfiguration["HealthChecks:HealthChecksEnabled"]))
             {
                 services.AddAbpZeroHealthCheck();
@@ -237,15 +229,7 @@ namespace TakTikan.Tailor.Web.Startup
                 StripeConfiguration.ApiKey = _appConfiguration["Payment:Stripe:SecretKey"];
             }
 
-            if (WebConsts.GraphQL.Enabled)
-            {
-                app.UseGraphQL<MainSchema>();
-                if (WebConsts.GraphQL.PlaygroundEnabled)
-                {
-                    app.UseGraphQLPlayground(
-                        new GraphQLPlaygroundOptions()); //to explorer API navigate https://*DOMAIN*/ui/playground
-                }
-            }
+            
 
             app.UseEndpoints(endpoints =>
             {

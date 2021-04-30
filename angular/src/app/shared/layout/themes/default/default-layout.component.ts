@@ -1,4 +1,4 @@
-import { Injector, Component, OnInit, Inject } from '@angular/core';
+﻿import { Injector, Component, OnInit, Inject } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { ThemesLayoutBaseComponent } from '@app/shared/layout/themes/themes-layout-base.component';
 import { UrlHelper } from '@shared/helpers/UrlHelper';

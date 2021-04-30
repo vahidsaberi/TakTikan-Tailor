@@ -1,4 +1,4 @@
-import { Component, Injector, Input } from '@angular/core';
+﻿import { Component, Injector, Input } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { OrganizationUnitDto } from '@shared/service-proxies/service-proxies';
 import { ArrayToTreeConverterService } from '@shared/utils/array-to-tree-converter.service';

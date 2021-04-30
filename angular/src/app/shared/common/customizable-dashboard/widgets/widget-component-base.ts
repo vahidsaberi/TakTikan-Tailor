@@ -1,4 +1,4 @@
-import { AppComponentBase } from '@shared/common/app-component-base';
+﻿import { AppComponentBase } from '@shared/common/app-component-base';
 import { OnDestroy, Injector, Component } from '@angular/core';
 import { timer, Subscription } from 'rxjs';
 

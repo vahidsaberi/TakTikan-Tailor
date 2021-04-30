@@ -16,7 +16,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TakTikan.Tailor.GraphQL\TakTikan.Tailor.GraphQL.csproj" />
     <ProjectReference Include="..\TakTikan.Tailor.Application\TakTikan.Tailor.Application.csproj" />
     <ProjectReference Include="..\TakTikan.Tailor.EntityFrameworkCore\TakTikan.Tailor.EntityFrameworkCore.csproj" />
   </ItemGroup>

@@ -1,4 +1,4 @@
-import { Component, Injector, Inject } from '@angular/core';
+﻿import { Component, Injector, Inject } from '@angular/core';
 import { DateTimeService } from '@app/shared/common/timing/date-time.service';
 import { AppConsts } from '@shared/AppConsts';
 import { AppComponentBase } from '@shared/common/app-component-base';

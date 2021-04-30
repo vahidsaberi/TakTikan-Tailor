@@ -1,4 +1,4 @@
-import { Injectable, Injector } from '@angular/core';
+﻿import { Injectable, Injector } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { EntityDtoOfGuid, NotificationServiceProxy } from '@shared/service-proxies/service-proxies';
 import { DateTime } from 'luxon';
@@ -122,7 +122,7 @@ export class UserNotificationHelper extends AppComponentBase {
         });
         if (Push.default.Permission.has()) {
             //Desktop notification
-            Push.default.create('AbpZeroTemplate', {
+            Push.default.create('Tailor', {
                 body: this.format(userNotification).text,
                 icon: abp.appPath + 'assets/common/images/app-logo-on-dark-sm.svg',
                 timeout: 6000,

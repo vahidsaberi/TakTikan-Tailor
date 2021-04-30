@@ -1,4 +1,4 @@
-import { AbpMultiTenancyService } from 'abp-ng2-module';
+﻿import { AbpMultiTenancyService } from 'abp-ng2-module';
 import { Component, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { LinkedAccountService } from '@app/shared/layout/linked-account.service';
 import { AppComponentBase } from '@shared/common/app-component-base';

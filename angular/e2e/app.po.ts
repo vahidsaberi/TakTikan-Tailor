@@ -1,6 +1,6 @@
-import { browser, element, by, protractor, ExpectedConditions as EC } from 'protractor';
+﻿import { browser, element, by, protractor, ExpectedConditions as EC } from 'protractor';
 
-export class AbpZeroTemplatePage {
+export class TailorPage {
     navigateTo() {
         return browser.get('/');
     }

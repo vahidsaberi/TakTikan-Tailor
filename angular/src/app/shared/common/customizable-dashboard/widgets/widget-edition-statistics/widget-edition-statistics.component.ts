@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, Injector, OnDestroy } from '@angular/core';
+﻿import { Component, OnInit, ElementRef, ViewChild, Injector, OnDestroy } from '@angular/core';
 import { HostDashboardServiceProxy, GetEditionTenantStatisticsOutput } from '@shared/service-proxies/service-proxies';
 import { DateTime } from 'luxon';
 import { filter as _filter } from 'lodash-es';

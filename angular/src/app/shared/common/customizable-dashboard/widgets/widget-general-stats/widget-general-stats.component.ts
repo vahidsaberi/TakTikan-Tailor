@@ -1,4 +1,4 @@
-import { Component, OnInit, Injector } from '@angular/core';
+﻿import { Component, OnInit, Injector } from '@angular/core';
 import { DashboardChartBase } from '../dashboard-chart-base';
 import { TenantDashboardServiceProxy } from '@shared/service-proxies/service-proxies';
 import { WidgetComponentBaseComponent } from '../widget-component-base';

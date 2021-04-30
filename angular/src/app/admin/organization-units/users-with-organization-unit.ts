@@ -1,4 +1,4 @@
-export interface IUsersWithOrganizationUnit {
+﻿export interface IUsersWithOrganizationUnit {
     userIds: number[];
     ouId: number;
 }

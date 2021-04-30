@@ -1,4 +1,4 @@
-import {Component, Injector, ViewChild, ViewEncapsulation, AfterViewInit} from '@angular/core';
+﻿import {Component, Injector, ViewChild, ViewEncapsulation, AfterViewInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {AppConsts} from '@shared/AppConsts';
 import {appModuleAnimation} from '@shared/animations/routerTransition';
@@ -175,7 +175,7 @@ export class UsersComponent extends AppComponentBase implements AfterViewInit {
     }
 
     showDynamicProperties(user: UserListDto): void {
-        this.dynamicPropertiesModal.show('MyCompanyName.AbpZeroTemplate.Authorization.Users.User', user.id.toString());
+        this.dynamicPropertiesModal.show('TakTikan.Tailor.Authorization.Users.User', user.id.toString());
     }
 
     setUsersProfilePictureUrl(users: UserListDto[]): void {

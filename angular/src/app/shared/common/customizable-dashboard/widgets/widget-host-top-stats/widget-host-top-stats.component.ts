@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit, OnDestroy } from '@angular/core';
+﻿import { Component, Injector, OnInit, OnDestroy } from '@angular/core';
 import { DateTimeService } from '@app/shared/common/timing/date-time.service';
 import { HostDashboardServiceProxy, TopStatsData } from '@shared/service-proxies/service-proxies';
 import { DateTime } from 'luxon';

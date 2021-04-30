@@ -1,4 +1,4 @@
-import {Component, Injector, Input} from '@angular/core';
+﻿import {Component, Injector, Input} from '@angular/core';
 import {AppComponentBase} from '@shared/common/app-component-base';
 import { findIndex as _findIndex, remove as _remove } from 'lodash-es';
 

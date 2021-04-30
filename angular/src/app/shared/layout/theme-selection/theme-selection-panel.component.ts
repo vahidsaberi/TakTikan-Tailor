@@ -1,4 +1,4 @@
-import { Component, Injector, ViewEncapsulation, ElementRef, HostBinding, OnInit } from '@angular/core';
+﻿import { Component, Injector, ViewEncapsulation, ElementRef, HostBinding, OnInit } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { UiCustomizationSettingsServiceProxy } from '@shared/service-proxies/service-proxies';
 import { OffcanvasOptions } from '@metronic/app/core/_base/layout/directives/offcanvas.directive';

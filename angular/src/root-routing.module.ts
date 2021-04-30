@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+﻿import { NgModule } from '@angular/core';
 import { NavigationEnd, Router, RouterModule, Routes } from '@angular/router';
 import { AppUiCustomizationService } from '@shared/common/ui/app-ui-customization.service';
 

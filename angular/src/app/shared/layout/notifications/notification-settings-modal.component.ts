@@ -1,4 +1,4 @@
-import { Component, Injector, ViewChild } from '@angular/core';
+﻿import { Component, Injector, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { GetNotificationSettingsOutput, NotificationServiceProxy, NotificationSubscriptionDto, UpdateNotificationSettingsInput } from '@shared/service-proxies/service-proxies';
 import { map as _map } from 'lodash-es';

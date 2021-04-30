@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+﻿import { Component, Injector, OnInit, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppConsts } from '@shared/AppConsts';
 import { AppComponentBase } from '@shared/common/app-component-base';

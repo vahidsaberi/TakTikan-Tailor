@@ -24,7 +24,6 @@ using Microsoft.IdentityModel.Tokens;
 using TakTikan.Tailor.Chat;
 using TakTikan.Tailor.Configuration;
 using TakTikan.Tailor.EntityFrameworkCore;
-using TakTikan.Tailor.Startup;
 using TakTikan.Tailor.Web.Authentication.JwtBearer;
 using TakTikan.Tailor.Web.Authentication.TwoFactor;
 using TakTikan.Tailor.Web.Chat.SignalR;
@@ -38,7 +37,6 @@ namespace TakTikan.Tailor.Web
         typeof(TailorEntityFrameworkCoreModule),
         typeof(AbpAspNetZeroCoreWebModule),
         typeof(AbpAspNetCoreSignalRModule),
-        typeof(TailorGraphQLModule),
         typeof(AbpRedisCacheModule), //AbpRedisCacheModule dependency (and Abp.RedisCache nuget package) can be removed if not using Redis cache
         typeof(AbpHangfireAspNetCoreModule) //AbpHangfireModule dependency (and Abp.Hangfire.AspNetCore nuget package) can be removed if not using Hangfire
     )]

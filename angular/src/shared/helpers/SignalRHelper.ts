@@ -1,4 +1,4 @@
-import { AppConsts } from '@shared/AppConsts';
+﻿import { AppConsts } from '@shared/AppConsts';
 import { LocalStorageService } from '@shared/utils/local-storage.service';
 
 export class SignalRHelper {

@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit, Input, AfterViewInit } from '@angular/core';
+﻿import { Component, Injector, OnInit, Input, AfterViewInit } from '@angular/core';
 import { ThemesLayoutBaseComponent } from '../themes/themes-layout-base.component';
 import { LinkedUserDto, ProfileServiceProxy, UserLinkServiceProxy } from '@shared/service-proxies/service-proxies';
 import { LinkedAccountService } from '@app/shared/layout/linked-account.service';

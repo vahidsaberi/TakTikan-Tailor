@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output, ViewChild, Injector, OnInit} from '@angular/core';
+﻿import {Component, EventEmitter, Output, ViewChild, Injector, OnInit} from '@angular/core';
 import {ModalDirective} from 'ngx-bootstrap/modal';
 import {AppComponentBase} from '@shared/common/app-component-base';
 import {

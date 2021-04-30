@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+﻿import { Injectable, OnInit } from '@angular/core';
 import { WidgetViewDefinition, WidgetFilterViewDefinition } from './definitions';
 import { DashboardCustomizationConst } from './DashboardCustomizationConsts';
 import { WidgetGeneralStatsComponent } from './widgets/widget-general-stats/widget-general-stats.component';

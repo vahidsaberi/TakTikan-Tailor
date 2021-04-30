@@ -1,4 +1,4 @@
-import { Component, Injector, ViewChild, OnInit } from '@angular/core';
+﻿import { Component, Injector, ViewChild, OnInit } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { DynamicEntityPropertyServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CreateDynamicEntityPropertyModalComponent } from './create-dynamic-entity-property-modal.component';

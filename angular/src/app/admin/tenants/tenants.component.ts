@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+﻿import { Component, Injector, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ImpersonationService } from '@app/admin/users/impersonation.service';
 import { CommonLookupModalComponent } from '@app/shared/common/lookup/common-lookup-modal.component';
@@ -35,7 +35,7 @@ export class TenantsComponent extends AppComponentBase implements OnInit {
     subscriptionDateRange: DateTime[] = [this._dateTimeService.getStartOfDay(), this._dateTimeService.getEndOfDayPlusDays(30)];
     creationDateRange: DateTime[] = [this._dateTimeService.getStartOfDay(), this._dateTimeService.getEndOfDay()];
 
-    _entityTypeFullName = 'MyCompanyName.AbpZeroTemplate.MultiTenancy.Tenant';
+    _entityTypeFullName = 'TakTikan.Tailor.MultiTenancy.Tenant';
     entityHistoryEnabled = false;
 
     filters: {

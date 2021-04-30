@@ -1,4 +1,4 @@
-import { Injector, Pipe, PipeTransform } from '@angular/core';
+﻿import { Injector, Pipe, PipeTransform } from '@angular/core';
 import { AppConsts } from '@shared/AppConsts';
 import { LocalizationService } from 'abp-ng2-module';
 

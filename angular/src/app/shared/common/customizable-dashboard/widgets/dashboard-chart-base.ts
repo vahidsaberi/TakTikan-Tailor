@@ -1,4 +1,4 @@
-export abstract class DashboardChartBase {
+﻿export abstract class DashboardChartBase {
     loading = true;
 
     showLoading() {

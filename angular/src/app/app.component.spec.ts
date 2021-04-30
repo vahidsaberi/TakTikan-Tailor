@@ -1,4 +1,4 @@
-/* tslint:disable:no-unused-variable */
+﻿/* tslint:disable:no-unused-variable */
 
 import { APP_BASE_HREF } from '@angular/common';
 import { TestBed, async } from '@angular/core/testing';
@@ -11,7 +11,7 @@ export function getRemoteServiceBaseUrl(): string {
     return 'https://localhost:44301';
 }
 
-describe('App: AbpZeroTemplate', () => {
+describe('App: Tailor', () => {
 
     // Remove freezeui loading animation
     (window as any).FreezeUI = function () { };

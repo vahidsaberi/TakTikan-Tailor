@@ -1,4 +1,4 @@
-import { TestBed, ComponentFixture, } from '@angular/core/testing';
+﻿import { TestBed, ComponentFixture, } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA, LOCALE_ID } from '@angular/core';
 import { RolesComponent } from './roles.component';
 import { RoleServiceProxy, ListResultDtoOfRoleListDto } from '@shared/service-proxies/service-proxies';

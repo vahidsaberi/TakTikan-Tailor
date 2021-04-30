@@ -1,4 +1,4 @@
-import { Component, Injector } from '@angular/core';
+﻿import { Component, Injector } from '@angular/core';
 import { AppConsts } from '@shared/AppConsts';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/common/app-component-base';

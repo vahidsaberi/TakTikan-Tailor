@@ -1,4 +1,4 @@
-export class AppMenuItem {
+﻿export class AppMenuItem {
     name = '';
     permissionName = '';
     icon = '';

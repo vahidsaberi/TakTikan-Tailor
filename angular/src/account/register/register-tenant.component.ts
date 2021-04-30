@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Injector, OnInit, ViewChild } from '@angular/core';
+﻿import { AfterViewInit, Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppConsts } from '@shared/AppConsts';
 import { accountModuleAnimation } from '@shared/animations/routerTransition';

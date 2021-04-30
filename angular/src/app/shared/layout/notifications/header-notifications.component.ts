@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit, ViewEncapsulation, NgZone, Input } from '@angular/core';
+﻿import { Component, Injector, OnInit, ViewEncapsulation, NgZone, Input } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { NotificationServiceProxy, UserNotification } from '@shared/service-proxies/service-proxies';
 import { IFormattedUserNotification, UserNotificationHelper } from './UserNotificationHelper';

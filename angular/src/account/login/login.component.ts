@@ -1,4 +1,4 @@
-import { AbpSessionService } from 'abp-ng2-module';
+﻿import { AbpSessionService } from 'abp-ng2-module';
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { accountModuleAnimation } from '@shared/animations/routerTransition';

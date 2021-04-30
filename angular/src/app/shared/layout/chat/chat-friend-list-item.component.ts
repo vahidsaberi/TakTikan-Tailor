@@ -1,4 +1,4 @@
-import { AbpMultiTenancyService } from 'abp-ng2-module';
+﻿import { AbpMultiTenancyService } from 'abp-ng2-module';
 import { Component, EventEmitter, Injector, Input, Output } from '@angular/core';
 import { AppConsts } from '@shared/AppConsts';
 import { ChatFriendDto } from './ChatFriendDto';

@@ -1,4 +1,4 @@
-import {Component, Injector, ViewChild} from '@angular/core';
+﻿import {Component, Injector, ViewChild} from '@angular/core';
 import {AppComponentBase} from '@shared/common/app-component-base';
 import {DynamicPropertyDto, DynamicPropertyServiceProxy} from '@shared/service-proxies/service-proxies';
 import {Router} from '@angular/router';

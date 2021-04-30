@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Injector, OnInit, Output, ViewChild } from '@angular/core';
+﻿import { Component, EventEmitter, Injector, OnInit, Output, ViewChild } from '@angular/core';
 import { AddMemberModalComponent } from '@app/admin/organization-units/add-member-modal.component';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { OrganizationUnitServiceProxy, OrganizationUnitUserListDto } from '@shared/service-proxies/service-proxies';

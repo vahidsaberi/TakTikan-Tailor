@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+﻿import { NgModule } from '@angular/core';
 import { AppBsModalDirective } from './app-bs-modal.directive';
 import { CommonModule } from '@angular/common';
 

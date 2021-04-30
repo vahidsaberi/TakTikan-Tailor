@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Injector, OnInit, Output, ViewChild } from '@angular/core';
+﻿import { ChangeDetectorRef, Component, EventEmitter, Injector, OnInit, Output, ViewChild } from '@angular/core';
 import { AddRoleModalComponent } from '@app/admin/organization-units/add-role-modal.component';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { OrganizationUnitServiceProxy, OrganizationUnitRoleListDto } from '@shared/service-proxies/service-proxies';

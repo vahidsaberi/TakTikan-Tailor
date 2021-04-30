@@ -1,4 +1,4 @@
-import { Component, OnInit, Injector } from '@angular/core';
+﻿import { Component, OnInit, Injector } from '@angular/core';
 import { InputTypeComponentBase } from '../input-type-component-base';
 
 @Component({

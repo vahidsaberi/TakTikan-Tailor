@@ -1,4 +1,4 @@
-import {
+﻿import {
     PermissionCheckerService,
     FeatureCheckerService,
     LocalizationService,
