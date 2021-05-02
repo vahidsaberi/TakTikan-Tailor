@@ -96,7 +96,12 @@ export class PrimengTableHelper {
     }
 
     adjustScroll(table: Table) {
-        const rtl = rtlDetect.isRtlLang(abp.localization.currentLanguage.name);
+
+        let rtl = rtlDetect.isRtlLang(abp.localization.currentLanguage.name);
+        //workaround for persian!!!
+        if (abp.localization.currentLanguage.name == "en-GB")
+            rtl = true;
+            
         if (!rtl) {
             return;
         }
@@ -104,7 +109,7 @@ export class PrimengTableHelper {
         const body: HTMLElement = table.el.nativeElement.querySelector('.ui-table-scrollable-body');
         const header: HTMLElement = table.el.nativeElement.querySelector('.ui-table-scrollable-header');
         body.addEventListener('scroll', () => {
-          header.scrollLeft = body.scrollLeft;
+            header.scrollLeft = body.scrollLeft;
         });
     }
 }

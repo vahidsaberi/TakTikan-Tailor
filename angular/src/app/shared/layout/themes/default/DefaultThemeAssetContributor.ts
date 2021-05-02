@@ -7,8 +7,11 @@ export class DefaultThemeAssetContributor implements IThemeAssetContributor {
     public getAssetUrls(): string[] {
         let asideSkin = ThemeHelper.getAsideSkin();
         let headerSkin = ThemeHelper.getHeaderSkin();
-        const isRtl = rtlDetect.isRtlLang(abp.localization.currentLanguage.name);
-
+        let isRtl = rtlDetect.isRtlLang(abp.localization.currentLanguage.name);
+        //workaround for persian!!!
+        if (abp.localization.currentLanguage.name == "en-GB")
+            isRtl = true;
+            
         return [
             AppConsts.appBaseUrl + '/assets/metronic/themes/default/css/skins/header/base/' + headerSkin + (isRtl ? '.rtl' : '') + '.min.css',
             AppConsts.appBaseUrl + '/assets/metronic/themes/default/css/skins/brand/' + asideSkin + (isRtl ? '.rtl' : '') + '.min.css',

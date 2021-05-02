@@ -13,9 +13,12 @@ export class AppUiCustomizationService {
 
     getAppModuleBodyClass(): string {
         let topMenuUsed = this._theme.baseSettings.menu.position === 'top';
-        const isRtl = rtlDetect.isRtlLang(
+        let isRtl = rtlDetect.isRtlLang(
             abp.localization.currentLanguage.name
         );
+        //workaround for persian!!!
+        if (abp.localization.currentLanguage.name == "en-GB")
+            isRtl = true;
 
         let cssClass =
             'page-' +

@@ -408,7 +408,10 @@ export class CustomizableDashboardComponent extends AppComponentBase implements 
 
   //all pages use gridster and its where they get their options. Changing this will change all gristers.
   private getGridsterConfig(): GridsterConfig {
-    const isRtl = rtlDetect.isRtlLang(abp.localization.currentLanguage.name);
+    let isRtl = rtlDetect.isRtlLang(abp.localization.currentLanguage.name);
+    //workaround for persian!!!
+    if(abp.localization.currentLanguage.name == "en-GB")
+      isRtl = true;
     return {
       pushItems: true,
       draggable: {

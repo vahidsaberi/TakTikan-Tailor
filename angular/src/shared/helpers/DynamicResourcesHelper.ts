@@ -16,8 +16,11 @@ export class DynamicResourcesHelper {
     static loadStyles(): Promise<any> {
         let theme = ThemeHelper.getTheme();
 
-        const isRtl = rtlDetect.isRtlLang(abp.localization.currentLanguage.name);
-
+        let isRtl = rtlDetect.isRtlLang(abp.localization.currentLanguage.name);
+        //workaround for persian!!!
+        if (abp.localization.currentLanguage.name == "en-GB")
+            isRtl = true;
+            
         if (isRtl) {
             document.documentElement.setAttribute('dir', 'rtl');
         }
