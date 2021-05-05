@@ -6,6 +6,7 @@ import {AppComponentBase} from '@shared/common/app-component-base';
 
 @Component({
     templateUrl: './fabrictype.component.html',
+    encapsulation: ViewEncapsulation.None,
     animations: [appModuleAnimation()]
 })
 
@@ -14,11 +15,12 @@ export class FabricTypeComponent extends AppComponentBase implements AfterViewIn
     constructor(
         injector: Injector
     ) {
+        debugger;
         super(injector);
     }
     
     ngAfterViewInit(): void {
-        throw new Error('Method not implemented.');
+        
     }
 
 }

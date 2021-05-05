@@ -18,7 +18,6 @@ export class GenderComponent extends AppComponentBase implements AfterViewInit {
     }
     
     ngAfterViewInit(): void {
-        throw new Error('Method not implemented.');
     }
 
 }

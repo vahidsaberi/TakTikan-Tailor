@@ -18,7 +18,6 @@ export class SeamstressComponent extends AppComponentBase implements AfterViewIn
     }
     
     ngAfterViewInit(): void {
-        throw new Error('Method not implemented.');
     }
 
 }

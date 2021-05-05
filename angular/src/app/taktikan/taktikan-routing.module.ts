@@ -17,15 +17,15 @@ import { SalineStoneOrderComponent } from './salinestoneorder/salinestoneorder.c
             {
                 path: '',
                 children: [
-                    { path: 'FabricType', component: FabricTypeComponent, data: { permission: 'Pages.TakTikan.FabricType' } },
-                    { path: 'FabricMaterial', component: FabricMaterialComponent, data: { permission: 'Pages.TakTikan.' } },
-                    { path: 'FabricCut', component: FabricCutComponent, data: { permission: 'Pages.TakTikan.FabricCut' } },
-                    { path: 'Gender', component: GenderComponent, data: { permission: 'Pages.TakTikan.Gender' } },
-                    { path: 'Seamstress', component: SeamstressComponent, data: { permission: 'Pages.TakTikan.Seamstress' } },
-                    { path: 'SalineStone', component: SalineStoneComponent, data: { permission: 'Pages.TakTikan.SalineStone' } },
-                    { path: 'FabricRoll', component: FabricRollComponent, data: { permission: 'Pages.TakTikan.FabricRoll' } },
-                    { path: 'SewnPiece', component: SewnPieceComponent, data: { permission: 'Pages.TakTikan.SewnPiece' } },
-                    { path: 'SalineStoneOrder', component: SalineStoneOrderComponent, data: { permission: 'Pages.TakTikan.SalineStoneOrder' } },
+                    { path: 'fabricType', component: FabricTypeComponent, data: { permission: 'Pages.TakTikan.FabricType' } },
+                    { path: 'fabricMaterial', component: FabricMaterialComponent, data: { permission: 'Pages.TakTikan.' } },
+                    { path: 'fabricCut', component: FabricCutComponent , data: { permission: 'Pages.TakTikan.FabricCut' } },
+                    { path: 'gender', component: GenderComponent, data: { permission: 'Pages.TakTikan.Gender' } },
+                    { path: 'seamstress', component: SeamstressComponent, data: { permission: 'Pages.TakTikan.Seamstress' } },
+                    { path: 'salineStone', component: SalineStoneComponent, data: { permission: 'Pages.TakTikan.SalineStone' } },
+                    { path: 'fabricRoll', component: FabricRollComponent, data: { permission: 'Pages.TakTikan.FabricRoll' } },
+                    { path: 'sewnPiece', component: SewnPieceComponent, data: { permission: 'Pages.TakTikan.SewnPiece' } },
+                    { path: 'salineStoneOrder', component: SalineStoneOrderComponent, data: { permission: 'Pages.TakTikan.SalineStoneOrder' } },
 
                     { path: '', redirectTo: 'hostDashboard', pathMatch: 'full' },
                     { path: '**', redirectTo: 'hostDashboard' }
