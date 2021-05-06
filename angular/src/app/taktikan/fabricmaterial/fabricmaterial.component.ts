@@ -18,6 +18,7 @@ export class FabricMaterialComponent extends AppComponentBase implements AfterVi
     }
     
     ngAfterViewInit(): void {
+        throw new Error('Method not implemented.');
     }
 
 }

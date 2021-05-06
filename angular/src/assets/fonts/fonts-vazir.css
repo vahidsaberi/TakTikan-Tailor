@@ -1,0 +1,60 @@
+@font-face {
+    font-family: Vazir;
+    src: url('Vazir/UI/Vazir-Regular-UI.eot');
+    src: url('Vazir/UI/Vazir-Regular-UI.eot?#iefix') format('embedded-opentype'),
+         url('Vazir/UI/Vazir-Regular-UI.woff2') format('woff2'),
+         url('Vazir/UI/Vazir-Regular-UI.woff') format('woff'),
+         url('Vazir/UI/Vazir-Regular-UI.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: Vazir;
+    src: url('Vazir/UI/Vazir-Bold-UI.eot');
+    src: url('Vazir/UI/Vazir-Bold-UI.eot?#iefix') format('embedded-opentype'),
+         url('Vazir/UI/Vazir-Bold-UI.woff2') format('woff2'),
+         url('Vazir/UI/Vazir-Bold-UI.woff') format('woff'),
+         url('Vazir/UI/Vazir-Bold-UI.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: Vazir;
+    src: url('Vazir/UI/Vazir-Black-UI.eot');
+    src: url('Vazir/UI/Vazir-Black-UI.eot?#iefix') format('embedded-opentype'),
+         url('Vazir/UI/Vazir-Black-UI.woff2') format('woff2'),
+         url('Vazir/UI/Vazir-Black-UI.woff') format('woff'),
+         url('Vazir/UI/Vazir-Black-UI.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: Vazir;
+    src: url('Vazir/UI/Vazir-Medium-UI.eot');
+    src: url('Vazir/UI/Vazir-Medium-UI.eot?#iefix') format('embedded-opentype'),
+         url('Vazir/UI/Vazir-Medium-UI.woff2') format('woff2'),
+         url('Vazir/UI/Vazir-Medium-UI.woff') format('woff'),
+         url('Vazir/UI/Vazir-Medium-UI.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: Vazir;
+    src: url('Vazir/UI/Vazir-Light-UI.eot');
+    src: url('Vazir/UI/Vazir-Light-UI.eot?#iefix') format('embedded-opentype'),
+         url('Vazir/UI/Vazir-Light-UI.woff2') format('woff2'),
+         url('Vazir/UI/Vazir-Light-UI.woff') format('woff'),
+         url('Vazir/UI/Vazir-Light-UI.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: Vazir;
+    src: url('Vazir/UI/Vazir-Thin-UI.eot');
+    src: url('Vazir/UI/Vazir-Thin-UI.eot?#iefix') format('embedded-opentype'),
+         url('Vazir/UI/Vazir-Thin-UI.woff2') format('woff2'),
+         url('Vazir/UI/Vazir-Thin-UI.woff') format('woff'),
+         url('Vazir/UI/Vazir-Thin-UI.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}

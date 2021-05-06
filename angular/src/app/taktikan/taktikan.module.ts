@@ -50,6 +50,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 @NgModule({
     imports: [
+        TakTikanRoutingModule,
         FormsModule,
         ReactiveFormsModule,
         CommonModule,
@@ -60,7 +61,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         PopoverModule.forRoot(),
         BsDropdownModule.forRoot(),
         BsDatepickerModule.forRoot(),
-        TakTikanRoutingModule,
         UtilsModule,
         AppCommonModule,
         TableModule,

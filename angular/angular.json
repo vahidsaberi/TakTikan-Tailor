@@ -54,7 +54,8 @@
               "src/assets/primeng/autocomplete/css/primeng.autocomplete.css",
               "src/assets/primeng/tree/css/primeng.tree.css",
               "src/assets/primeng/context-menu/css/primeng.context-menu.css",
-
+              
+              "src/assets/fonts/fonts-vazir.css",
               "src/assets/fonts/fonts-poppins.css",
               "src/assets/fonts/fonts-roboto.css",
               "src/assets/metronic/common/fonts/keenthemes-icons/ki.css",
@@ -175,6 +176,7 @@
               "src/assets/primeng/tree/css/primeng.tree.css",
               "src/assets/primeng/context-menu/css/primeng.context-menu.css",
 
+              "src/assets/fonts/fonts-vazir.css",
               "src/assets/fonts/fonts-poppins.css",
               "src/assets/fonts/fonts-roboto.css",
               "src/assets/metronic/common/fonts/keenthemes-icons/ki.css",
