@@ -18,7 +18,7 @@ export class SalineStoneOrderComponent extends AppComponentBase implements After
     }
     
     ngAfterViewInit(): void {
-        throw new Error('Method not implemented.');
+
     }
 
 }

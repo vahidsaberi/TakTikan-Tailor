@@ -18,7 +18,6 @@ export class FabricCutComponent extends AppComponentBase implements AfterViewIni
     }
     
     ngAfterViewInit(): void {
-        throw new Error('Method not implemented.');
     }
 
 }

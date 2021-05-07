@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
     animations: [appModuleAnimation()]
 })
 
-export class GenderComponent extends AppComponentBase {
+export class GenderComponent extends AppComponentBase implements AfterViewInit {
     
     @ViewChild('gendersTable', {static: true}) gendersTable: ElementRef;
     @ViewChild('dataTable', {static: true}) dataTable: Table;
@@ -26,5 +26,9 @@ export class GenderComponent extends AppComponentBase {
         private _router: Router
     ) {
         super(injector);
+    }
+
+    ngAfterViewInit(): void {
+
     }
 }
