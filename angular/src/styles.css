@@ -157,3 +157,15 @@ ngx-spinner .loading-text {
     color: white;
     font-size: 1.3em;
 }
+
+
+.aside-menu .menu-nav .menu-item.menu-item-open > .menu-link > .menu-arrow:before,
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item.menu-item-open > .menu-link .menu-arrow:before{
+    -webkit-transform: rotateZ(90deg) !important;
+    transform: rotateZ(90deg) !important;
+}
+.aside-menu .menu-nav > .menu-item > .menu-link .menu-arrow:before,
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item > .menu-link .menu-arrow:before{
+    -webkit-transform: rotateZ(180deg) !important;
+    transform: rotateZ(180deg) !important;
+}

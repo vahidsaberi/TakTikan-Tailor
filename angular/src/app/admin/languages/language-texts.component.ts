@@ -22,7 +22,7 @@ export class LanguageTextsComponent extends AppComponentBase implements AfterVie
     @ViewChild('sourceNameCombobox', {static: true}) sourceNameCombobox: ElementRef;
     @ViewChild('targetValueFilterCombobox', {static: true}) targetValueFilterCombobox: ElementRef;
     @ViewChild('textsTable', {static: true}) textsTable: ElementRef;
-    @ViewChild('editTextModal', {static: true}) editTextModal: EditTextModalComponent;
+    @ViewChild('editTextModal', {static: true}) editTextModal: any ;
     @ViewChild('dataTable', {static: true}) dataTable: Table;
     @ViewChild('paginator', {static: true}) paginator: Paginator;
 

@@ -14,7 +14,7 @@ namespace TakTikan.Tailor.Interface
 
         Task<List<GenderDto>> FindGender(Expression<Func<Gender, bool>> predicate);
 
-        Task<List<GenderDto>> GetAllGender();
+        Task<List<GenderDto>> GetAllGender(GenderInput input);
 
         Task UpdateGender(GenderDto input);
     }

@@ -2,6 +2,7 @@
 using Abp.Domain.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using TakTikan.Tailor.Authorization;
@@ -40,9 +41,15 @@ namespace TakTikan.Tailor.Service
             return result;
         }
 
-        public async Task<List<GenderDto>> GetAllGender()
+        public async Task<List<GenderDto>> GetAllGender(GenderInput input)
         {
             var models = await this._repository.GetAllListAsync();
+
+            //if (input.TargetValueFilter == "EMPTY")
+            //{
+            //    models = models.Where(s => s.TargetValue.IsNullOrEmpty());
+            //}
+
             var result = ObjectMapper.Map<List<GenderDto>>(models);
 
             return result;

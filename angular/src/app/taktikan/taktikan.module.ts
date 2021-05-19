@@ -43,6 +43,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { PerfectScrollbarModule, PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 import { AppBsModalModule } from '@shared/common/appBsModal/app-bs-modal.module';
+import { GenderServiceProxy } from '@shared/service-proxies/service-proxies';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     // suppressScrollX: true
@@ -93,6 +94,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     exports: [
     ],
     providers: [
+        GenderServiceProxy,
         TreeDragDropService,
         { provide: BsDatepickerConfig, useFactory: NgxBootstrapDatePickerConfigService.getDatepickerConfig },
         { provide: BsDaterangepickerConfig, useFactory: NgxBootstrapDatePickerConfigService.getDaterangepickerConfig },
